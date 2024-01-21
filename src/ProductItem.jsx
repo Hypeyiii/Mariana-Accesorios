@@ -16,7 +16,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
     "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition-all duration-500 text-center bottom-0 text-lg" : 
-    "text-black bg-pink-300/60 w-full flex justify-center text-sm text-center items-center rounded-b-lg transition-all duration-500 md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg md:transition-all md:duration-500";
+    'text-black bg-pink-300/60 w-full flex justify-center text-sm text-center items-center rounded-b-lg transition-all duration-500 md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg md:transition-all md:duration-500';
     const handleHover = () => {
         setIsHover(true);
     }

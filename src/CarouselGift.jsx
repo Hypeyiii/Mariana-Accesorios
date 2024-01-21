@@ -10,9 +10,9 @@ function CarouselGift() {
         <img src="https://i.pinimg.com/originals/13/f6/8a/13f68adb06c8e2d16a7cb7ca6b910d27.gif"
          alt="..." className='w-[420px] sm-[400px] xl:w-[900px] h-[200px] md:h-[350px] bg-transparent
          shadow-xl shadow-black'/>
-        <img src="https://mx.onpost.shop/cdn/shop/articles/aretes.jpg?v=1639057703&width=1200"
+        <img src="https://pandoramx.vtexassets.com/assets/vtex.file-manager-graphql/images/6e0ee586-b421-476e-ae50-3bbf88831090___e000096b47ac90225abd027e5910889b.gif"
          alt="..." className='w-[420px] sm-[400px] xl:w-[900px] h-[200px] md:h-[350px] bg-transparent
-         shadow-xl shadow-black'/>
+         '/>
          <img src="https://almalatina.yanbal.com/wp-content/uploads/2021/06/Renata-flores-aretes-adan-yanbal.gif"
          alt="..." className='w-[420px] sm-[400px] xl:w-[900px] h-[200px] md:h-[350px] bg-transparent
          shadow-xl shadow-black'/>

@@ -9,7 +9,7 @@ export function FavModal(){
     // Utilizamos setTimeout para cambiar el estado después de 5 segundos
     const timeout = setTimeout(() => {
       setModalVisible(false);
-    }, 5000);
+    }, 3000);
 
     // Limpiamos el temporizador en el desmontaje del componente
     return () => clearTimeout(timeout);
@@ -17,9 +17,10 @@ export function FavModal(){
   const cleanTimeout = () => setModalVisible(false);
     return(
         <div>
-            {modalVisible && (<div className="modal-container fixed z-40 top-0 right-0 bg-pink-300/60 backdrop-blur-sm p-5">
-            <h1 className="text-xl p-5 text-pretty font-bold">Añadido a favoritos</h1>
-            <button className="text-xs absolute top-0 right-0 p-1 items-center justify-center" onClick={cleanTimeout}>
+            {modalVisible && (<div className="modal-container fixed z-40 top-0 right-0 bg-pink-300/60 
+            backdrop-blur-sm p-5 shadow-2xl shadow-pink-300">
+            <h1 className="text-sm md:text-xl p-5 text-pretty font-bold">Añadido a favoritos</h1>
+            <button className="absolute top-0 right-0 p-1 items-center justify-center" onClick={cleanTimeout}>
                 <img src={closeIcon} alt="Close Modal" className="size-6" />
             </button>
         </div>)}

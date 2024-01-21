@@ -8,7 +8,7 @@ function Products() {
         <Promotion/>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[400px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
-        mt-[100px] gap-x-5 gap-y-10 px-4"> 
+        mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
           
         <ProductItem
             imgSrc="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png"
@@ -37,7 +37,7 @@ function Products() {
         
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[400px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
-        mt-[100px] gap-x-5 gap-y-10 px-4">    
+        mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1">    
         <ProductItem
             imgSrc="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png"
             category="Novedades" 
@@ -63,7 +63,7 @@ function Products() {
         <PromotionSpecial/>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[400px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
-        mt-[100px] gap-x-5 gap-y-10 px-4">    
+        mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1">    
         <ProductItem
             imgSrc="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png"
             category="Novedades" 

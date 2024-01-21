@@ -8,7 +8,7 @@ import './Menu.css';
 export function Header(){
 
     return(
-        <Navbar className='z-40 fixed top-0 left-0 right-0 shadow-md flex flex-row px-8 backdrop-blur-sm md:bg-transparent bg-white transition-all duration-1000 w-full mx-auto'>
+        <Navbar className='z-40 fixed top-0 left-0 right-0 shadow-md flex flex-row px-8 backdrop-blur-sm bg-white/70 md:bg-white/80 transition-all duration-1000 w-full mx-auto'>
       <div className='flex justify-start items-center mt-2 mb-2 mr-auto sm:mx-auto sm:w-full '
       id='inicio'>
         <a href='#' className='mr-auto sm:mx-auto'>
@@ -18,12 +18,12 @@ export function Header(){
       <NavbarBrand>
         <NavbarToggle/>
       </NavbarBrand>
-      <NavbarCollapse className='menu-animated mx-auto h-screen w-full sm:h-auto'>
+      <NavbarCollapse className='mr-32 menu-animated mx-auto h-screen w-full sm:h-auto'>
         <div className='grow flex flex-col sm:flex-row gap-x-12 text-lg md:text-xl text-black/80 justify-center 
         items-start sm:items-center mx-auto [&>a]:transition-all [&>a]:duration-300
         py-4 md:py-0 w-[125px] sm:w-auto'>
           <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Inicio</a>
-          <a href="#lanzamientos" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Lanzamientos</a>
+          <a href="/#lanzamientos" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Lanzamientos</a>
           <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Anillos</a>
           <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Aretes</a>
           <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Collares</a>

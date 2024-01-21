@@ -5,26 +5,73 @@ import returnIcon from './assets/returnIcon.svg';
 import facebookIcon from './assets/facebookIcon.svg';
 import instagramIcon from './assets/instagramIcon.svg';
 import tiktokIcon from './assets/tiktokIcon.svg';
-import { Dropdown } from 'flowbite-react';
+import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
+import {useState} from 'react';
 
 function Footer(){
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const handleOpen=()=>{
+        setModalOpen(true);
+    };
+
+    const handleClose=()=>{
+        setModalOpen(false);
+    };
     return(
      <>
         <TopFooter/>
         <div className='w-full bg-[#f6f6f6]'>
-        <div className=' md:w-[1500px] w-[400px] grid grid-cols-12 mx-auto bg-transparent gap-x-6 gap-y-6'>
+        <div className=' md:w-[1500px] w-[400px] grid grid-cols-12 mx-auto bg-transparent gap-x-6 gap-y-6 px-4'>
             <div className='col-span-12 md:col-span-5 flex flex-col items-start justify-center mt-[70px]'>
                 <p className='text-xl text-black/90 font-semibold '>Conoce nuestras redes sociales!</p>
                 <ul className='flex flex-row gap-x-6 items-start justify-start'>
-                    <li><a href="facebook.com"><img src={facebookIcon} alt="Logo facebook" className='size-6'/></a></li>
+                    <li><a><img src={facebookIcon} alt="Logo facebook" className='size-6'/></a></li>
                     <li><a href="www.facebook.com"><img src={instagramIcon} alt="Logo facebook" className='size-6'/></a></li>
                     <li><a href="www.facebook.com"><img src={tiktokIcon} alt="Logo facebook" className='size-6'/></a></li>
                 </ul>
                 <span className='text-xl text-black/90 mt-[70px] font-bold'>Registrate y se el primero en descubrir 
                 nuestros nuevos lanzamientos y promociones</span>
-                <button className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
+                <button id='register' onClick={handleOpen} className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
                  text-md text-white hover:text-white font-bold w-[200px] items-center justify-center mx-auto
-                 shadow-md shadow-black transition-all duration-300 active:scale-105 active:duration-75'>Registrate</button>
+                 shadow-md shadow-black transition-all duration-300 active:scale-105 active:duration-75'>
+                   {modalOpen ? "Registrarse" : "Registrarse"}
+                </button>
+                {modalOpen && (
+        <>
+          <div className="z-40 fixed top-0 left-0 w-full h-full flex items-center justify-center backdrop-blur-sm transition-opacity" onClick={handleClose}></div>
+          <div className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-md transition-transform">
+          <div className='flex w-full'>
+          <button className='grow flex flex-row justify-end items-end p-1' onClick={handleClose}>
+            X
+          </button>
+          </div>
+                    <Card className="max-w-sm">
+                <form className="flex flex-col gap-4">
+                    <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="email1" value="Your email" />
+                    </div>
+                    <TextInput id="email1" type="email" placeholder="username@something.com" required />
+                    </div>
+                    <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="password1" value="Your password" />
+                    </div>
+                    <TextInput id="password1" type="password" required />
+                    </div>
+                    <div className="flex items-center gap-2">
+                    <Checkbox id="remember" />
+                    <Label htmlFor="remember">Remember me</Label>
+                    </div>
+                    <Button type="submit" className='bg-black hover:bg-white transition-all duration-300'
+                        >Submit
+                    </Button>
+                </form>
+                </Card>
+          </div>
+        </>
+      )}
             </div>
             <div className='col-span-6 md:col-span-2 justify-start items-start w-full md:mt-[70px]'>
                 <ul className='justify-start items-start text-black text-md font-medium flex flex-col gap-y-6'>

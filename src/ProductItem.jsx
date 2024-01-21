@@ -2,6 +2,7 @@ import {useState} from 'react'
 import deliveryIcon from './assets/deliveryIcon.svg';
 import heartIcon from './assets/heartIcon.svg';
 import fillHeartIcon from './assets/fillHeartIcon.svg';
+import FavModal from './hooks/FavModal.jsx';
 
 // eslint-disable-next-line react/prop-types
 function ProductItem({imgSrc, category, productDescription, productPrice}){
@@ -10,6 +11,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
         setIsFavorite(!isFavorite);
     }
     const fav = isFavorite ? fillHeartIcon : heartIcon;
+    const favModal = isFavorite ? <FavModal/> : "";
 
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
@@ -26,8 +28,9 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
             shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
             onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
-                <div className='grow justify-end flex items-center p-3'>
+                <div className='grow justify-end flex items-end p-3 flex-col'>
             <img src={fav} alt="Heart Icon" className='size-7 active:scale-125 transition-all duration-75' onClick={handleClick}/>
+            {favModal}
                 </div>
                 <div className='flex justify-center items-center mx-auto mb-5'>
                     <img src={imgSrc} alt="Ring Image" id='productIMG' className='md:size-[250px] size-[150px] transition-all duration-500'/>

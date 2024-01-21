@@ -1,8 +1,8 @@
 import {useState} from 'react'
+import FavoriteModal from './hooks/FavoriteModal.jsx';
 import deliveryIcon from './assets/deliveryIcon.svg';
 import heartIcon from './assets/heartIcon.svg';
 import fillHeartIcon from './assets/fillHeartIcon.svg';
-import FavModal from './hooks/FavModal.jsx';
 
 // eslint-disable-next-line react/prop-types
 function ProductItem({imgSrc, category, productDescription, productPrice}){
@@ -10,8 +10,14 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     const handleClick = () => {
         setIsFavorite(!isFavorite);
     }
+    const [isWanted, setIsWanted] = useState(false);
+    const handleWanted = () => {
+        setIsWanted(!isWanted);
+    }
     const fav = isFavorite ? fillHeartIcon : heartIcon;
-    const favModal = isFavorite ? <FavModal/> : "";
+    const favModal = isFavorite ? <FavoriteModal adding="Añadido a favoritos"/> : "";
+    const cartModal = isWanted ? <FavoriteModal adding="Añadido a carrito"/> : '';
+    const cartText = isWanted ? "AÑADIDO" : "AÑADIR AL CARRITO";
 
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
@@ -44,8 +50,8 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
                     <img src={deliveryIcon} alt="Delivery Icon" className='size-10'/>
                     <span className='font-semibold'>Envio</span>
                 </div>
-                <div className={hoverShopping}>
-                    <span className='p-4 font-bold text-xs md:text-sm'>AGREGAR AL CARRITO</span>
+                <div className={hoverShopping} onClick={handleWanted}>
+                    <span className='p-4 font-bold text-xs md:text-sm'>{cartText}{cartModal}</span>
                 </div>
             </div>
         </>

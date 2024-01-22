@@ -8,13 +8,12 @@ import tiktokIcon from './assets/tiktokIcon.svg';
 import LogginModal from './hooks/LogginModal';
 
 function Footer(){
-    
     return(
      <>
         <TopFooter/>
         <div className='w-full bg-[#f6f6f6]'>
         <div className=' md:w-[1500px] w-[400px] grid grid-cols-12 mx-auto bg-transparent gap-x-6 gap-y-6 px-4'>
-            <div className='col-span-12 md:col-span-5 flex flex-col items-start justify-center mt-[70px]'>
+            <div className='col-span-12 md:col-span-5 flex flex-col items-start justify-center mt-[70px] mb-[70px]'>
                 <p className='text-xl text-black/90 font-semibold '>Conoce nuestras redes sociales!</p>
                 <ul className='flex flex-row gap-x-6 items-start justify-start'>
                     <li><a><img src={facebookIcon} alt="Logo facebook" className='size-6'/></a></li>
@@ -25,7 +24,7 @@ function Footer(){
                 nuestros nuevos lanzamientos y promociones</span>
                 <LogginModal/>
             </div>
-            <div className='col-span-6 md:col-span-2 justify-start items-start w-full md:mt-[70px]'>
+            <div className='col-span-6 md:col-span-2 justify-start items-start w-full md:mt-[70px] mb-[70px]'>
                 <ul className='justify-start items-start text-black text-md font-medium flex flex-col gap-y-6'>
                     <li className='font-semibold text-lg py-2 uppercase'>Ayuda</li>
                     <li>Mis pedidos</li>
@@ -47,11 +46,12 @@ function Footer(){
                     <li>Política de privacidad</li>
                 </ul>
             </div>
-            <div className='col-span-12 md:col-span-3 justify-start items-start w-full md:mt-[70px]'>
+            <div className='col-span-12 md:col-span-3 justify-start items-start w-full md:mt-[70px] mb-[70px]'>
                 <ul className='justify-start items-start text-black text-md font-medium flex flex-col gap-y-6'>
                     <li className='font-semibold text-lg py-2 uppercase'>Atención a cliente</li>
                     <li>+52 12345678</li>
-                    <li className='text-pink-300/60'>contacto@MarianaAccesorios.com.mx</li>
+                    <a href="#"><li className='text-black/50 hover:text-black
+                    transition-all duration-300  underline'>contacto@MarianaAccesorios.com.mx</li></a>
                     <li>Horario de atención de Lunes a Viernes de 09:00 a 18:00 h.</li>
                 </ul>
             </div>
@@ -59,7 +59,8 @@ function Footer(){
         </div>
     </>
     )
-}export default Footer;
+}
+export default Footer;
 
 function TopFooter(){
     return(
@@ -97,4 +98,5 @@ function TopFooter(){
             </div>
         </div>
     )
-}export {TopFooter};
+}
+export {TopFooter};

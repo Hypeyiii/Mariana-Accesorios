@@ -1,10 +1,17 @@
+import LogginModal from './hooks/LogginModal.jsx';
+
 export function Promotion(){
     return(
-        <div className="mt-[150px] sm:mt-[100px] lg:text-4xl items-center flex justify-center text-black/70 font-bold 
-        w-full mx-auto text-2xl text-center">
-          <h1 className="p-5">Conoce nuestras <span className="text-pink-300/60">promociones</span> y <span className="text-pink-300/60">novedades</span> de este  
-          <span className="text-pink-300/60"> 2024</span></h1>
+    <>
+        <div className="mt-[125px] sm:mt-[100px] lg:text-4xl items-center flex justify-center text-black/70 font-bold 
+        w-full mx-auto text-2xl text-center text-pretty">
+          <h1 className="p-5">Registrate y conoce nuestras <span className="text-pink-300/60">promociones</span> y <span className="text-pink-300/60">novedades</span> de este  
+          <span className="text-pink-300/60"> 2024</span></h1>  
         </div>
+        <div className='flex justify-center items-center'>
+        <LogginModal/>
+        </div>
+    </>
     )
 }
 

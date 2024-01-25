@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import FavoriteModal from './hooks/FavoriteModal.jsx';
 import deliveryIcon from './assets/deliveryIcon.svg';
 import heartIcon from './assets/heartIcon.svg';
 import fillHeartIcon from './assets/fillHeartIcon.svg';
+import Notification from './hooks/Notification.jsx';
 
 // eslint-disable-next-line react/prop-types
 function ProductItem({imgSrc, category, productDescription, productPrice}){
@@ -15,8 +15,8 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
         setIsWanted(!isWanted);
     }
     const fav = isFavorite ? fillHeartIcon : heartIcon;
-    const favModal = isFavorite ? <FavoriteModal adding="Añadido a favoritos"/> : "";
-    const cartModal = isWanted ? <FavoriteModal adding="Añadido a carrito"/> : '';
+    const favModal = isFavorite ? <Notification adding="Añadido a favoritos"/> : "";
+    const cartModal = isWanted ? <Notification adding="Añadido a carrito"/> : '';
     const cartText = isWanted ? "AÑADIDO" : "AÑADIR AL CARRITO";
 
     const [isHover, setIsHover] = useState(false);
@@ -32,10 +32,10 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-            shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
-            onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
-                <div className='grow justify-end flex items-end p-3 flex-col'>
-            <img src={fav} alt="Heart Icon" className='size-7 active:scale-125 transition-all duration-75' onClick={handleClick}/>
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
+                onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
+                    <div className='grow justify-end flex items-end p-3 flex-col'>
+                <img src={fav} alt="Heart Icon" className='size-7 active:scale-125 transition-all duration-75' onClick={handleClick}/>
             {favModal}
                 </div>
                 <div className='flex justify-center items-center mx-auto mb-5'>
@@ -56,4 +56,5 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
             </div>
         </>
     )
-}export default ProductItem;
+}
+export default ProductItem;

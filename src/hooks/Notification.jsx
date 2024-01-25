@@ -1,9 +1,9 @@
 import { useState, useEffect} from "react";
-import './FavModal.css'
+import './Notification.css'
 import close from '../assets/close.svg'
 
 // eslint-disable-next-line react/prop-types
-function FavoriteModal({adding}){
+function Notification({adding}){
     const [modalVisible, setModalVisible] = useState(true);
 
     useEffect(() => {
@@ -26,4 +26,4 @@ function FavoriteModal({adding}){
         </div>
     )
 }
-export default FavoriteModal;
+export default Notification;

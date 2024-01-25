@@ -73,4 +73,5 @@ function LogginModal(){
       )}
       </>
     )
-}export default LogginModal;
+}
+export default LogginModal;

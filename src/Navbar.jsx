@@ -3,19 +3,19 @@ import userLogo from './assets/userLogo.svg';
 import heartLogo from './assets/heartLogo.svg';
 import shoppingCartLogo from './assets/shoppingCartLogo.svg';
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarToggle } from 'flowbite-react';
-import { useState } from 'react';
 import './Menu.css';
+import { useState } from 'react';
 
 export function Header(){
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  
-  const handleClickOpen = () => {
-      setNavbarOpen(true);
-  }
-  const handleClickClose = () => {
-      setNavbarOpen(useState);
-  }
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClose = () => {
+    setIsMenuOpen(false);
+  };
     return(
       <>
         <Navbar className='fixed z-40 top-0  shadow-md flex flex-col sm:flex-row px-8 
@@ -27,14 +27,15 @@ export function Header(){
               </a>
           </div>
         <NavbarBrand>
-          <NavbarToggle/>
+          <NavbarToggle onClick={handleToggle}/>
         </NavbarBrand>
-        <NavbarCollapse className='menu-animated mx-auto h-screen w-full sm:h-auto'>
+        <NavbarCollapse className={`menu-animated mx-auto h-screen w-full sm:h-auto ${isMenuOpen ? 'block' : 'hidden'}`}
+        onClick={handleClose}>
             <div className='grow flex flex-col sm:flex-row gap-x-12 text-lg md:text-xl text-black/80 justify-center 
             items-start sm:items-center mx-auto [&>a]:transition-all [&>a]:duration-300
             py-4 md:py-0 w-[125px] sm:w-auto'>
               <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Inicio</a>
-              <a href="/#lanzamientos" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Lanzamientos</a>
+              <a href="#lanzamientos" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Lanzamientos</a>
               <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Anillos</a>
               <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Aretes</a>
               <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Collares</a>

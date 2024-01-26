@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import closeIcon from '../assets/close.svg';
-import userLogo from '../assets/userLogo.svg'; 
 
 function LogginModal(){
 
@@ -17,8 +16,8 @@ function LogginModal(){
     return(
         <>
         <button id='register' onClick={handleOpen} className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
-                 text-md text-white hover:text-white font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
-                 shadow-md shadow-black transition-all duration-300 active:scale-105 active:duration-75'>
+                 text-md text-white hover:text-black font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
+                 hover:shadow-lg hover:shadow-black transition-all duration-300 active:scale-105 active:duration-75'>
                    {modalOpen ? "Registrarse" : "Registrarse"}
                 </button>,
                 {modalOpen && (
@@ -52,8 +51,8 @@ function LogginModal(){
                 <input 
                 type="checkbox" 
                 id='remember' 
-                className='rounded-md checked:bg-pink-300/60
-                focus:ring-0 shadow-sm shadow-black' />
+                className='rounded-md checked:bg-pink-300/60 
+                focus:ring-white shadow-sm shadow-black' />
                 <label htmlFor='remember' className='cursor-pointer'>Remember me</label>
                 </div>
                 <div className='flex hover:underline cursor-pointer justify-end items-end'>
@@ -64,7 +63,7 @@ function LogginModal(){
                 <button
                   type="button"
                   className="p-2 bg-black/90 hover:bg-pink-300/60 hover:text-black text-white rounded-md
-                  transition-all duration-300 shadow-lg shadow-black font-bold"
+                  transition-all duration-300 hover:shadow-lg hover:shadow-black font-bold"
                   onClick={handleClose}
                 >
                   Iniciar Sesión

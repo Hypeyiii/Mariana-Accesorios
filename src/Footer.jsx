@@ -12,10 +12,10 @@ import {useState, useEffect} from 'react';
 
 function Footer(){
     
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const handleResize = () => {
-    setIsMobile(window.innerWidth <= 1024);
+    setIsMobile(window.innerWidth <= 768);
      };
 
      useEffect(() => {
@@ -45,8 +45,8 @@ function Footer(){
      <>
         <TopFooter/>
         <div className='w-full bg-[#f6f6f6]'>
-        <div className=' md:w-[1500px] w-[380px] grid grid-cols-12 mx-auto bg-transparent gap-x-6 gap-y-6 px-4'>
-            <div className='col-span-12 md:col-span-5 flex flex-col items-start justify-center mt-[70px] mb-[70px]'>
+        <div className='grid grid-cols-12 mx-auto bg-transparent gap-x-6 gap-y-6 px-10'>
+            <div className='col-span-12 md:col-span-12 xl:col-span-5 flex flex-col justify-start items-start mt-[70px] mb-[70px]'>
                 <p className='text-md md:text-xl text-black/90 font-semibold '>Conoce nuestras redes sociales!</p>
                 <ul className='flex flex-row gap-x-6 items-start justify-start mt-3'>
                     <li><a><img src={facebookIcon} alt="Logo facebook" className='size-5 md:size-6'/></a></li>
@@ -57,7 +57,7 @@ function Footer(){
                 nuestros nuevos lanzamientos y promociones</span>
                 <LogginModal/>
             </div>
-            <div className='col-span-4 md:col-span-2 justify-start items-start w-full md:mt-[70px] md:mb-[70px]'>
+            <div className='col-span-4 md:col-span-4 xl:col-span-2 justify-start items-start w-full md:mt-[70px] md:mb-[70px]'>
             <li className='text-sm md:text-lg list-none mb-[24px] font-semibold py-2 uppercase' onClick={handleHelpListToggle}>
               Ayuda 
               {isMobile ? <img src={downArrowIcon} alt="Down arrow icon" className='size-4 inline-block cursor-pointer'/> : ''}
@@ -72,7 +72,7 @@ function Footer(){
                     <li id='list'>Información del producto</li>
                 </ul>
             </div>
-            <div className='col-span-4 md:col-span-2 justify-start items-start w-full md:mt-[70px]'>
+            <div className='col-span-4 md:col-span-4 xl:col-span-2 justify-start items-start w-full md:mt-[70px]'>
             <li onClick={handleAboutUsListToggle} className='list-none text-sm md:text-lg font-semibold mb-[24px] py-2 uppercase'>Nosotros
             {isMobile ? <img src={downArrowIcon} alt="Down arrow icon" className='size-4 inline-block cursor-pointer'/> : ''}
             </li>
@@ -86,7 +86,7 @@ function Footer(){
                     <li>Política de privacidad</li>
                 </ul>
             </div>
-            <div className='col-span-4 md:col-span-3 justify-start items-start md:mt-[70px] mb-[70px]'>
+            <div className='col-span-4 md:col-span-4 xl:col-span-3 justify-start items-start md:mt-[70px] mb-[70px]'>
             <li onClick={handleContactListToggle} className='list-none text-sm md:text-lg font-semibold py-2 uppercase mb-[24px]'>Atención a cliente
             {isMobile ? <img src={downArrowIcon} alt="Down arrow icon" className='size-4 inline-block cursor-pointer'/> : ''}
             </li>

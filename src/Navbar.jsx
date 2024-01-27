@@ -31,7 +31,7 @@ export function Header(){
         </NavbarBrand>
         <NavbarCollapse className={`menu-animated mx-auto h-screen w-full sm:h-auto ${isMenuOpen ? 'block' : 'hidden'}`}
         onClick={handleClose}>
-            <div className='grow flex flex-col sm:flex-row gap-x-12 text-lg md:text-xl text-black/80 justify-between 
+            <div className='flex flex-col sm:flex-row gap-x-12 text-lg md:text-xl text-black/80 
             items-start sm:items-center mx-auto [&>a]:transition-all [&>a]:duration-300
             py-4 md:py-0 w-[125px] sm:w-full'>
               <a href="#" className='hover:border-b-[#fad2f6] border-b-2 border-b-transparent'>Inicio</a>

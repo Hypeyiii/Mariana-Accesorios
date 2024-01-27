@@ -39,25 +39,25 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
                         duration-75' onClick={handleClick}/>
                     }
                         {isFavorite && (
-                            <Notification adding={'Añadido a favoritos'}/>
+                            <Notification adding={'AÑADIDO A FAVORITOS'}/>
                         )}
                 </div>
-                <div className='flex justify-center items-center mx-auto mb-5'>
-                    <img src={imgSrc} alt="Ring Image" id='productIMG' className='md:size-[250px] size-[150px] transition-all 
-                    duration-500'/>
+                <div className='flex justify-center items-center mb-5'>
+                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[250px] size-[100px] transition-all 
+                    duration-300'/>
                 </div>
                 <div className='flex flex-col justify-center items-center text-md gap-y-5 mt-[30px]'>
                    <strong className='text-black/50'>{category}</strong> 
                    <span className='font-semibold text-sm md:text-lg text-black/80 flex items-center justify-center mx-auto 
                    text-center px-1'>{productDescription}</span>
-                   <span className='font-semibold text-black/90 text-sm md:text-lg'>${productPrice} MX</span>
+                   <span className='font-semibold text-black/90 text-xs md:text-lg'>${productPrice} MX</span>
                 </div>
                 <div className='flex flex-row justify-center items-center mt-[50px] mb-[25px]'>
-                    <img src={deliveryIcon} alt="Delivery Icon" className='size-10'/>
-                    <span className='font-semibold'>Envio</span>
+                    <img src={deliveryIcon} alt="Delivery Icon" className='size-6 md:size-10'/>
+                    <span className='font-semibold text-sm md:text-lg'>Envio</span>
                 </div>
                 <div className={hoverShopping} onClick={handleWanted}>
-                    <span className='p-4 font-bold text-xs md:text-sm'>{isWanted ? 'Añadido a carrito'
+                    <span className='p-4 font-bold text-xs md:text-sm uppercase'>{isWanted ? 'Añadido'
                     : 'Añadir a carrito'}
                     {isWanted &&( <Notification adding={'Añadido a carrito'}/>
                     )}

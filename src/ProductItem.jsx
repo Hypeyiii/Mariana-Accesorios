@@ -6,6 +6,7 @@ import Notification from './hooks/Notification.jsx';
 
 // eslint-disable-next-line react/prop-types
 function ProductItem({imgSrc, category, productDescription, productPrice}){
+   
     const [isFavorite, setIsFavorite] = useState(false);
     const handleClick = () => {
         setIsFavorite(!isFavorite);
@@ -14,10 +15,6 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     const handleWanted = () => {
         setIsWanted(!isWanted);
     }
-    const fav = isFavorite ? fillHeartIcon : heartIcon;
-    const favModal = isFavorite ? <Notification adding="Añadido a favoritos"/> : "";
-    const cartModal = isWanted ? <Notification adding="Añadido a carrito"/> : '';
-    const cartText = isWanted ? "AÑADIDO" : "AÑADIR AL CARRITO";
 
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
@@ -32,18 +29,27 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer 
+                [&>div>#productIMG]:hover:scale-105 "
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
-                <img src={fav} alt="Heart Icon" className='size-7 active:scale-125 transition-all duration-75' onClick={handleClick}/>
-            {favModal}
+                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 active:scale-125
+                         transition-all duration-75' onClick={handleClick}/>
+                        : <img src={heartIcon} alt="Heart Icon" className='size-7 active:scale-125 transition-all 
+                        duration-75' onClick={handleClick}/>
+                    }
+                        {isFavorite && (
+                            <Notification adding={'Añadido a favoritos'}/>
+                        )}
                 </div>
                 <div className='flex justify-center items-center mx-auto mb-5'>
-                    <img src={imgSrc} alt="Ring Image" id='productIMG' className='md:size-[250px] size-[150px] transition-all duration-500'/>
+                    <img src={imgSrc} alt="Ring Image" id='productIMG' className='md:size-[250px] size-[150px] transition-all 
+                    duration-500'/>
                 </div>
                 <div className='flex flex-col justify-center items-center text-md gap-y-5 mt-[30px]'>
                    <strong className='text-black/50'>{category}</strong> 
-                   <span className='font-semibold text-sm md:text-lg text-black/80 flex items-center justify-center mx-auto text-center px-1'>{productDescription}</span>
+                   <span className='font-semibold text-sm md:text-lg text-black/80 flex items-center justify-center mx-auto 
+                   text-center px-1'>{productDescription}</span>
                    <span className='font-semibold text-black/90 text-sm md:text-lg'>${productPrice} MX</span>
                 </div>
                 <div className='flex flex-row justify-center items-center mt-[50px] mb-[25px]'>
@@ -51,7 +57,11 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
                     <span className='font-semibold'>Envio</span>
                 </div>
                 <div className={hoverShopping} onClick={handleWanted}>
-                    <span className='p-4 font-bold text-xs md:text-sm'>{cartText}{cartModal}</span>
+                    <span className='p-4 font-bold text-xs md:text-sm'>{isWanted ? 'Añadido a carrito'
+                    : 'Añadir a carrito'}
+                    {isWanted &&( <Notification adding={'Añadido a carrito'}/>
+                    )}
+                    </span>
                 </div>
             </div>
         </>

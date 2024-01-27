@@ -16,11 +16,11 @@ function LogginModal(){
     return(
         <>
         <button id='register' onClick={handleOpen} className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
-                 text-md text-white hover:text-black font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
-                 hover:shadow-lg hover:shadow-black transition-all duration-300 active:scale-105 active:duration-75 text-md
-                 md:text-lg'>
+              text-white hover:text-black font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
+               hover:shadow-lg hover:shadow-black transition-all duration-300 active:scale-105 active:duration-75 text-sm
+               md:text-lg'>
                    {modalOpen ? "Registrarse" : "Registrarse"}
-                </button>,
+                </button>
                 {modalOpen && ( 
       <>
         <div className="fixed inset-0 z-50 flex items-center justify-center">

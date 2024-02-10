@@ -22,15 +22,20 @@ function NavBar() {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-        setShowMenu(false);
-      }
-    });
-  }, []);
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768); // Define aquí el ancho de pantalla para considerar como "modo móvil"
+    }
+    // Ejecutar handleResize al cargar la página
+    handleResize();
+    // Agregar el event listener para manejar el cambio de tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Limpiar el event listener al desmontar el componente para evitar fugas de memoria
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
+
 
   return (
     <nav className={`fixed top-0 flex flex-row md:flex-col gap-y-4 items-center justify-between w-screen
@@ -72,7 +77,7 @@ function NavBar() {
           </li>
         </ul>
       }
-      {showMenu &&
+      {isMobile && showMenu &&
       <div className='slide-in-left fixed inset-0 mx-auto flex items-center justify-center w-screen h-screen backdrop-blur-sm '
       onClick={onCloseMenu}>
       <ul className='absolute flex flex-col gap-y-3 justify-between items-center text-lg font-bold'>

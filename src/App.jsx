@@ -6,11 +6,12 @@ import './index.css';
 
 function App() {
   return (
+    
     <>
       <CarouselGift/>
       <Header/>
-      <Products/>
-      <Footer/>
+      <Products/>   
+       <Footer/>
     </>
   )
 }export default App;

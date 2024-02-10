@@ -14,7 +14,7 @@ function NavBar() {
   const onCloseMenu = () => {
     setShowMenu(false);
   }
-  if(showMenu){
+  if(showMenu && isMobile){
     document.body.style.overflow = "hidden";
   }
   else{
@@ -36,78 +36,103 @@ function NavBar() {
     };
   }, []); 
 
+  useEffect(() => {
+    const handleScroll = () => {
+      var sections = document.querySelectorAll('.section');
+      var navItems = document.querySelectorAll('.item');
+      sections.forEach(function(section, index) {
+        var top = section.offsetTop;
+        var bottom = top + section.offsetHeight;
+        if (window.scrollY + 128 >= top && window.scrollY < bottom) {
+            navItems.forEach(function(item) {
+            item.classList.remove('border-b-pink-300');
+          });
+          if (navItems[index]) {
+            navItems[index].classList.add('border-b-pink-300');
+          }
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+});
+
 
   return (
-    <nav className={`fixed top-0 flex flex-row md:flex-col gap-y-4 items-center justify-between w-screen
+    <nav className={`section fixed top-0 flex flex-row md:flex-col gap-y-4 items-center justify-between w-screen
     bg-white shadow-xl shadow-black py-3 px-3 z-50`}>
-          <img src={logo} alt="Logo Mariana Accesorios" className='z-50 w-28 h-14 cursor-pointer'/>
+          <a href="#">
+           <img src={logo} alt="Logo Mariana Accesorios" className='z-50 w-28 h-14 cursor-pointer'/>
+          </a>
          {isMobile ? 
           <FiMenu className="z-50 text-3xl cursor-pointer" onClick={() => setShowMenu(!showMenu)} />
          :
             <ul className='flex flex-row justify-between items-center gap-x-8 mx-auto text-xl [&>li]:transition [&>li]:duration-300 '>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#home">Inicio</a>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+              <a href="#">Inicio</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+              <a href="#releases">Lanzamientos</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+              <a href="#rings">Anillos</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+              <a href="#earrings">Aretes</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+              <a href="#necklace">Collares</a>
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#products">Lanzamientos</a>
-            </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">Anillos</a>
-            </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">Aretes</a>
-            </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">Collares</a>
-            </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">
+              <a href="#user">
               <FaUser className='size-6 transition hover:scale-110'/>
               </a>
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">
+              <a href="#cart">
                 <HiShoppingCart className='size-6 transition hover:scale-110'/>  
               </a>
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#contact">
+              <a href="#favorites">
               <MdFavorite className='size-6 transition hover:scale-110'/>
               </a>
           </li>
         </ul>
       }
       {isMobile && showMenu &&
-      <div className='slide-in-left fixed inset-0 mx-auto flex items-center justify-center w-screen h-screen backdrop-blur-sm '
+      <div className='slide-in-left fixed inset-0 flex items-center justify-center w-screen h-screen backdrop-blur-[8px] '
       onClick={onCloseMenu}>
       <ul className='absolute flex flex-col gap-y-3 justify-between items-center text-lg font-bold'>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#home">Inicio</a>
+          <a href="#">Inicio</a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#products">Lanzamientos</a>
+          <a href="#releases">Lanzamientos</a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">Anillos</a>
+          <a href="#rings">Anillos</a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">Aretes</a>
+          <a href="#earrings">Aretes</a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">Collares</a>
+          <a href="#necklace">Collares</a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">
+          <a href="#user">
           <FaUser className='size-6 transition hover:scale-110'/>
           </a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">
+          <a href="#cart">
             <HiShoppingCart className='size-6 transition hover:scale-110'/>  
           </a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
-          <a href="#contact">
+          <a href="#favorites">
           <MdFavorite className='size-6 transition hover:scale-110'/>
           </a>
           </li>

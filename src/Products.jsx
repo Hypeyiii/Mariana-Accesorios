@@ -6,7 +6,7 @@ function Products() {
     return (
         <>
         <Promotion/>
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
+    <div id="releases" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
         mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
           
@@ -35,7 +35,7 @@ function Products() {
     </div>
         <PromotionSport/>
         
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
+        <div id="rings" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
         mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1">    
         <ProductItem
@@ -61,7 +61,7 @@ function Products() {
             productPrice="12,345.00"/>
     </div> 
         <PromotionSpecial/>
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
+    <div id="necklace" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-8 
         auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] 
         mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1">    
         <ProductItem
@@ -85,7 +85,7 @@ function Products() {
             category="Novedades"
             productDescription="Anillo de diamantes"
             productPrice="12,345.00"/>
-    </div>    
+    </div>   
         </>
     )
 }export default Products;

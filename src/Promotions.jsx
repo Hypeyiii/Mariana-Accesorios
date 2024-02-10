@@ -42,9 +42,9 @@ export function PromotionSport(){
 export function PromotionSpecial(){
     return(
     <>  
-        <div className="grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
+        <div className="section grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
          2xl:w-[1350px] items-center justify-center mx-auto mt-[120px] mb-5 gap-x-10 gap-y-10"
-         id='lanzamientos'>
+         id='earrings'>
             <div className="col-span-6 lg:col-span-2 w-[300px] flex flex-col gap-y-6 justify-start items-start mx-auto">
                 <h1 className="text-xs md:text-sm font-medium text-black/90">¡CORRE, QUE VUELAN!</h1>
                 <p className="text-xl md:text-2xl font-semibold md:font-bold text-black/85">PARA CADA MOMENTO ESPECIAL</p>

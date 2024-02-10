@@ -5,12 +5,11 @@ import returnIcon from './assets/returnIcon.svg';
 import facebookIcon from './assets/facebookIcon.svg';
 import instagramIcon from './assets/instagramIcon.svg';
 import tiktokIcon from './assets/tiktokIcon.svg';
-import LogginModal from './hooks/LogginModal';
 import './Footer.css';
 import downArrowIcon from './assets/downArrowIcon.svg';
 import {useState, useEffect} from 'react';
 
-function Footer(){
+function Footer({openModal}){
     
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -49,13 +48,28 @@ function Footer(){
             <div className='col-span-12 md:col-span-12 xl:col-span-5 flex flex-col justify-start items-start mt-[70px] mb-[70px]'>
                 <p className='text-md md:text-xl text-black/90 font-semibold '>Conoce nuestras redes sociales!</p>
                 <ul className='flex flex-row gap-x-6 items-start justify-start mt-3'>
-                    <li><a><img src={facebookIcon} alt="Logo facebook" className='size-5 md:size-6'/></a></li>
-                    <li><a href="www.facebook.com"><img src={instagramIcon} alt="Logo facebook" className='size-5 md:size-6'/></a></li>
-                    <li><a href="www.facebook.com"><img src={tiktokIcon} alt="Logo facebook" className='size-5 md:size-6'/></a></li>
+                    <li><a  href='https://www.facebook.com/search/top?q=mariana%20accesorios' 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                        <img src={facebookIcon} alt="Logo facebook" className='size-5 md:size-6'/>
+                        </a>
+                    </li>
+                    <li><a  href="https://www.instagram.com/mariana.accesorio/" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                                <img src={instagramIcon} alt="Logo facebook" className='size-5 md:size-6'/>
+                        </a>
+                    </li>
+                    <li><a href="www.facebook.com" target="_blank" rel="noopener noreferrer"><img src={tiktokIcon} alt="Logo facebook" className='size-5 md:size-6'/></a></li>
                 </ul>
                 <span className='text-md md:text-xl text-black/90 mt-[50px] font-bold'>Registrate y se el primero en descubrir 
                 nuestros nuevos lanzamientos y promociones</span>
-                <LogginModal/>
+                <button id='register' className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
+              text-white hover:text-black font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
+               hover:shadow-lg hover:shadow-black transition-all duration-300 active:scale-105 active:duration-75 text-sm
+               md:text-lg' onClick={openModal}>
+                   Registrate
+        </button>
             </div>
             <div className='col-span-4 md:col-span-4 xl:col-span-2 justify-start items-start w-full md:mt-[70px] md:mb-[70px]'>
             <li className='text-sm md:text-lg list-none mb-[24px] font-semibold py-2 uppercase' onClick={handleHelpListToggle}>

@@ -1,6 +1,4 @@
-import LogginModal from './hooks/LogginModal.jsx';
-
-export function Promotion(){
+function Promotion({openModal}){
     return(
     <>
         <div className="mt-[125px] sm:mt-[100px] lg:text-4xl items-center flex justify-center text-black/70 font-bold 
@@ -9,13 +7,18 @@ export function Promotion(){
           <span className="text-pink-300/60"> 2024</span></h1>  
         </div>
         <div className='flex justify-center items-center'>
-        <LogginModal/>
+        <button id='register' className='mt-[50px] p-2 bg-black hover:bg-pink-300/60 rounded-sm
+              text-white hover:text-black font-bold w-[125px] md:w-[250px] items-center justify-center mx-auto
+               hover:shadow-lg hover:shadow-black transition-all duration-300 active:scale-105 active:duration-75 text-sm
+               md:text-lg' onClick={openModal}>
+                   Registrate
+        </button>
         </div>
     </>
     )
 }
 
-export function PromotionSport(){
+function PromotionSport(){
     return (
         <div className="grid mt-32 mb-32 bg-[#f6f6f6] justify-center items-center grid-cols-12 auto-rows-auto w-full
          px-4">
@@ -39,7 +42,7 @@ export function PromotionSport(){
     )
 }
 
-export function PromotionSpecial(){
+function PromotionSpecial(){
     return(
     <>  
         <div className="section grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
@@ -111,3 +114,4 @@ export function PromotionSpecial(){
     </>    
     )
 }
+export {Promotion, PromotionSport, PromotionSpecial};

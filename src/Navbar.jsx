@@ -7,10 +7,9 @@ import { MdFavorite } from "react-icons/md";
 import { useState, useEffect } from 'react';
 import { FiMenu } from "react-icons/fi";
 
-function NavBar() {
+function NavBar({openModal}) {
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
   const onCloseMenu = () => {
     setShowMenu(false);
   }
@@ -23,14 +22,11 @@ function NavBar() {
 
   useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth <= 768); // Define aquí el ancho de pantalla para considerar como "modo móvil"
-    }
-    // Ejecutar handleResize al cargar la página
+      setIsMobile(window.innerWidth <= 768);
+     }
     handleResize();
-    // Agregar el event listener para manejar el cambio de tamaño de la ventana
     window.addEventListener('resize', handleResize);
 
-    // Limpiar el event listener al desmontar el componente para evitar fugas de memoria
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -69,33 +65,33 @@ function NavBar() {
          {isMobile ? 
           <FiMenu className="z-50 text-3xl cursor-pointer" onClick={() => setShowMenu(!showMenu)} />
          :
-            <ul className='flex flex-row justify-between items-center gap-x-8 mx-auto text-xl [&>li]:transition [&>li]:duration-300 '>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+            <ul className='flex flex-row justify-between items-center gap-x-8 mx-auto text-xl [&>li]:transition-all [&>li]:duration-300 text-black/70'>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#">Inicio</a>
             </li>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#releases">Lanzamientos</a>
             </li>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#rings">Anillos</a>
             </li>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#earrings">Aretes</a>
             </li>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#necklace">Collares</a>
             </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='border border-transparent hover:border-b-pink-300 py-1 hover:text-black' onClick={openModal}>
               <a href="#user">
               <FaUser className='size-6 transition hover:scale-110'/>
               </a>
             </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#cart">
                 <HiShoppingCart className='size-6 transition hover:scale-110'/>  
               </a>
             </li>
-            <li className='border border-transparent hover:border-b-pink-300 py-1'>
+            <li className='border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#favorites">
               <MdFavorite className='size-6 transition hover:scale-110'/>
               </a>
@@ -123,7 +119,7 @@ function NavBar() {
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>
           <a href="#user">
-          <FaUser className='size-6 transition hover:scale-110'/>
+          <FaUser className='size-6 transition hover:scale-110' onClick={openModal}/>
           </a>
         </li>
         <li className='border border-transparent hover:border-b-pink-300 py-1'>

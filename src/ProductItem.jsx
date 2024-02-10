@@ -5,7 +5,7 @@ import fillHeartIcon from './assets/fillHeartIcon.svg';
 import Notification from './hooks/Notification.jsx';
 
 // eslint-disable-next-line react/prop-types
-function ProductItem({imgSrc, category, productDescription, productPrice}){
+function ProductItem({imgSrc, category, productDescription, productPrice, id}){
    
     const [isFavorite, setIsFavorite] = useState(false);
     const handleClick = () => {
@@ -20,6 +20,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     const hoverShopping = isHover ? 
     "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition-all duration-500 text-center bottom-0 text-lg" : 
     'text-black bg-pink-300/60 w-full flex justify-center text-sm text-center items-center rounded-b-lg transition-all duration-500 md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg md:transition-all md:duration-500';
+    
     const handleHover = () => {
         setIsHover(true);
     }
@@ -29,8 +30,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice}){
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer 
-                [&>div>#productIMG]:hover:scale-105 "
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
                         {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 active:scale-125

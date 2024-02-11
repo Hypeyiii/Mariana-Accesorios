@@ -2,7 +2,8 @@ import {PromotionSport, PromotionSpecial} from "./Promotions.jsx";
 import ProductItem from "./ProductItem.jsx";
 import data from "../data.js";
 
-function Products({allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts }) {
+function Products({allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, allFavoriteProducts, setAllFavoriteProducts, countFavProducts, setCountFavProducts}) {
+
     const addToCart = (product) => {
         if(allProducts.find((p) => p.id === product.id)){
             const newProducts = allProducts.map((p) => {
@@ -20,6 +21,21 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
         setAllProducts([...allProducts, product])
     }
 
+    const addToFavorites = (favoriteProducts) => {
+        if(allFavoriteProducts.find((item) => item.id === favoriteProducts.id)){
+            const newFavProducts = allFavoriteProducts.map((item) => {
+                if(item.id === favoriteProducts.id){
+                    return {...item, quantity: item.quantity + 1}
+                }
+                return p;
+            })
+            setCountFavProducts(countFavProducts + favoriteProducts.quantity);
+            return setAllFavoriteProducts(newFavProducts);
+        }
+        setCountFavProducts(countFavProducts + favoriteProducts.quantity);
+        setAllFavoriteProducts([...allFavoriteProducts, favoriteProducts])
+    }
+
 
     return (
         <>
@@ -34,11 +50,13 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
                                 category={product.category}
                                 productDescription={product.productDescription}
                                 productPrice={product.productPrice}
-                                addToCart={() => addToCart(product)}   
+                                addToCart={() => addToCart(product)} 
+                                addToFavorite={() => addToFavorites(product)}  
                             />
                         ))
                     }
             </div>
+            <PromotionSpecial/>
         </>
     )
 }

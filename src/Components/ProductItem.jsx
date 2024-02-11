@@ -5,16 +5,11 @@ import fillHeartIcon from '../assets/fillHeartIcon.svg';
 import Notification from '../hooks/Notification.jsx';
 
 
-function ProductItem({imgSrc, category, productDescription, productPrice, allProducts, setAllProducts, product, addToCart}){
+function ProductItem({imgSrc, category, productDescription, productPrice, product, addToCart, addToFavorite}){
+    
 
     const [isFavorite, setIsFavorite] = useState(false);
-    const handleClick = () => {
-        setIsFavorite(!isFavorite);
-    }
     const [isWanted, setIsWanted] = useState(false);
-    const handleWanted = () => {
-        setIsWanted(!isWanted);
-    }
 
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
@@ -29,7 +24,11 @@ function ProductItem({imgSrc, category, productDescription, productPrice, allPro
     }
     const cartClick = () => {
         addToCart(product);
-        handleWanted();
+        setIsWanted(true);
+    }
+    const onFavorite = () => {
+        addToFavorite(product);
+        setIsFavorite(true);
     }
     return(
         <>
@@ -38,14 +37,14 @@ function ProductItem({imgSrc, category, productDescription, productPrice, allPro
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
                         {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 active:scale-125
-                         transition-all duration-75' onClick={handleClick}/>
-                        : <img src={heartIcon} alt="Heart Icon" className='size-7 active:scale-125 transition-all 
-                        duration-75' onClick={handleClick}/>
+                         transition-all duration-75' onClick={onFavorite}/>
+                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-7 active:scale-125 transition-all 
+                        duration-75'/>
                     }
-                        {isFavorite && (
-                            <Notification adding={'AÑADIDO A FAVORITOS'}/>
-                        )}
                 </div>
+                {isFavorite && (
+                            <Notification adding={'Añaido a favoritos'}/>
+                        )}
                 <div className='flex justify-center items-center mb-5'>
                     <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[250px] size-[100px] transition-all 
                     duration-300'/>
@@ -63,10 +62,10 @@ function ProductItem({imgSrc, category, productDescription, productPrice, allPro
                 <div className={hoverShopping} onClick={cartClick}>
                     <span className='p-4 font-bold text-xs md:text-sm uppercase' >
                         Agregar al carrito
+                    </span>
+                    </div>
                     {isWanted && ( <Notification adding={'Añadido a carrito'}/>
                     )}
-                    </span>
-                </div>
             </div>
         </>
     )

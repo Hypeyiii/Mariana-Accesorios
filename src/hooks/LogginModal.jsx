@@ -10,7 +10,7 @@ function LogginModal({modalOpen, handleClose}) {
             <div className="fixed inset-0 bg-black opacity-50" onClick={handleClose}></div>
             <div className="bg-white p-2 rounded-md z-10 shadow-xl shadow-gray-600">
             <div className='flex items-end justify-end'>
-              <img src={closeIcon} className='size-6 cursor-pointer hover:bg-gray-200 transition-all duration-300' onClick={handleClose} alt="" />
+              <img src={closeIcon} className='size-6 cursor-pointer hover:bg-gray-200 transition-all duration-300' onClick={handleClose} alt="Close Icon" />
               </div>
               <div className='p-8 flex flex-col items-start jusitfy-start gap-y-4'>
               <h2 className="text-2xl font-bold mb-4">Sing it to our plataform</h2>

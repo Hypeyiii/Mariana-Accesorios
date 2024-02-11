@@ -8,34 +8,49 @@ import { useState } from 'react';
 import { Promotion } from './Components/Promotions.jsx';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [favoriteProducts, setfavoriteProducts] = useState([]);
+  const [allFavoriteProducts, setAllFavoriteProducts] = useState([]);
+  const [countFavProducts, setCountFavProducts] = useState(0);
   const [allProducts, setAllProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [countProducts, setCountProducts] = useState(0);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
-  };
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  }
 
   return (
     <>
       <CarouselGift/>
-      <Header openModal={openModal}
+      <Header 
+        openModal={openModal}
         allProducts={allProducts} setAllProducts={setAllProducts}
         total={total} setTotal={setTotal}
-        countProducts={countProducts} setCountProducts={setCountProducts} />
+        countProducts={countProducts} setCountProducts={setCountProducts} 
+        favoriteProducts={favoriteProducts} setfavoriteProducts={setfavoriteProducts}
+        allFavoriteProducts={allFavoriteProducts} setAllFavoriteProducts={setAllFavoriteProducts}
+        countFavProducts={countFavProducts} setCountFavProducts={setCountFavProducts}
+        />
 
-      <Promotion openModal={openModal}/>
-      <Products openModal={openModal}
+      <Promotion
+        openModal={openModal}
+      />
+      <Products
         allProducts={allProducts} setAllProducts={setAllProducts}
         total={total} setTotal={setTotal}
         countProducts={countProducts} setCountProducts={setCountProducts}
-      /> 
-      <LogginModal modalOpen={isModalOpen} handleClose={closeModal}/>  
-      <Footer openModal={openModal}/>
+        favoriteProducts={favoriteProducts} setfavoriteProducts={setfavoriteProducts}
+        allFavoriteProducts={allFavoriteProducts} setAllFavoriteProducts={setAllFavoriteProducts}
+        countFavProducts={countFavProducts} setCountFavProducts={setCountFavProducts}
+        
+      />  
+      <LogginModal
+        modalOpen={isModalOpen}
+        handleClose={() => setIsModalOpen(false)}
+      />  
+      <Footer 
+        openModal={openModal}
+      />
     </>
   )
 }export default App;

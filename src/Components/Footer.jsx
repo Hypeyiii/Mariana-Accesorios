@@ -1,12 +1,12 @@
-import creditcardIcon from './assets/creditcardIcon.svg';
-import giftIcon from './assets/giftIcon.svg';
-import ubicationIcon from './assets/ubicationIcon.svg';
-import returnIcon from './assets/returnIcon.svg';
-import facebookIcon from './assets/facebookIcon.svg';
-import instagramIcon from './assets/instagramIcon.svg';
-import tiktokIcon from './assets/tiktokIcon.svg';
+import creditcardIcon from '../assets/creditcardIcon.svg';
+import giftIcon from '../assets/giftIcon.svg';
+import ubicationIcon from '../assets/ubicationIcon.svg';
+import returnIcon from '../assets/returnIcon.svg';
+import facebookIcon from '../assets/facebookIcon.svg';
+import instagramIcon from '../assets/instagramIcon.svg';
+import tiktokIcon from '../assets/tiktokIcon.svg';
 import './Footer.css';
-import downArrowIcon from './assets/downArrowIcon.svg';
+import downArrowIcon from '../assets/downArrowIcon.svg';
 import {useState, useEffect} from 'react';
 
 function Footer({openModal}){

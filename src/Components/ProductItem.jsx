@@ -1,12 +1,12 @@
 import {useState} from 'react'
-import deliveryIcon from './assets/deliveryIcon.svg';
-import heartIcon from './assets/heartIcon.svg';
-import fillHeartIcon from './assets/fillHeartIcon.svg';
-import Notification from './hooks/Notification.jsx';
+import deliveryIcon from '../assets/deliveryIcon.svg';
+import heartIcon from '../assets/heartIcon.svg';
+import fillHeartIcon from '../assets/fillHeartIcon.svg';
+import Notification from '../hooks/Notification.jsx';
 
-// eslint-disable-next-line react/prop-types
-function ProductItem({imgSrc, category, productDescription, productPrice, id}){
-   
+
+function ProductItem({imgSrc, category, productDescription, productPrice, allProducts, setAllProducts, product, addToCart}){
+
     const [isFavorite, setIsFavorite] = useState(false);
     const handleClick = () => {
         setIsFavorite(!isFavorite);
@@ -26,6 +26,10 @@ function ProductItem({imgSrc, category, productDescription, productPrice, id}){
     }
     const handleHoverLeave = () => {
         setIsHover(false);
+    }
+    const cartClick = () => {
+        addToCart(product);
+        handleWanted();
     }
     return(
         <>
@@ -56,10 +60,10 @@ function ProductItem({imgSrc, category, productDescription, productPrice, id}){
                     <img src={deliveryIcon} alt="Delivery Icon" className='size-6 md:size-10'/>
                     <span className='font-semibold text-sm md:text-lg'>Envio</span>
                 </div>
-                <div className={hoverShopping} onClick={handleWanted}>
-                    <span className='p-4 font-bold text-xs md:text-sm uppercase'>{isWanted ? 'Añadido'
-                    : 'Añadir a carrito'}
-                    {isWanted &&( <Notification adding={'Añadido a carrito'}/>
+                <div className={hoverShopping} onClick={cartClick}>
+                    <span className='p-4 font-bold text-xs md:text-sm uppercase' >
+                        Agregar al carrito
+                    {isWanted && ( <Notification adding={'Añadido a carrito'}/>
                     )}
                     </span>
                 </div>

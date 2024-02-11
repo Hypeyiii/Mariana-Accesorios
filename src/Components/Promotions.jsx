@@ -45,7 +45,7 @@ function PromotionSport(){
 function PromotionSpecial(){
     return(
     <>  
-        <div className="section grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
+        <div className="grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
          2xl:w-[1350px] items-center justify-center mx-auto mt-[120px] mb-5 gap-x-10 gap-y-10"
          id='earrings'>
             <div className="col-span-6 lg:col-span-2 w-[300px] flex flex-col gap-y-6 justify-start items-start mx-auto">
@@ -114,4 +114,46 @@ function PromotionSpecial(){
     </>    
     )
 }
-export {Promotion, PromotionSport, PromotionSpecial};
+const DiscoverPromotion = () => {
+    return(
+        <div className="grid grid-cols-12 items-center justify-center mx-auto gap-4 mt-24 w-[350px] md:w-[1100px]">
+            <div className="flex flex-col justify-center items-center md:items-start md:jusitfy-start col-span-12 md:col-span-3 text-xl font-semibold">
+                <h1 className="text-base">Descubre Mariana Accesorios</h1>
+                <p className="text-sm font-light">Joyeria que necesitas</p>
+            </div>
+            <div className="col-span-12 md:col-span-9 grid grid-cols-4 gap-4">
+                <a href="#news" className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
+                        <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
+                    </div>
+                </a>
+                <a href="#releases" className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
+                        <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
+                    </div>
+                </a>
+                <a href="#clothes" className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
+                        <p className="text-base border-b-2 border-b-pink-300">Ropa deportiva</p>
+                    </div>
+                </a>
+                <a href="#necklace" className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        <img src="https://eurostore.melaniemartinezmusic.com/on/demandware.static/-/Sites-warner-master/default/dw15b356c9/pdp-img-eu/Melanie%20Martinez/October%202023%20Merch/Portals%20Necklace.png"
+                        alt="New Product Icon" className="size-12" />
+                        <p className="text-base border-b-2 border-b-pink-300">Collares</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    )
+}
+
+export {Promotion, PromotionSport, PromotionSpecial, DiscoverPromotion};

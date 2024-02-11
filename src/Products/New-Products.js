@@ -1,4 +1,4 @@
-const data = [
+const newProducts = [
     {
         id: 1,
         imgSrc: "https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png",
@@ -40,4 +40,4 @@ const data = [
         quantity: 1,  
     },
 ];
-export default data;
+export default newProducts;

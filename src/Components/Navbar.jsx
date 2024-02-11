@@ -13,10 +13,9 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
   const[cartModal, setCartModal] = useState(false);
 
   const openCartModal = () => {
-    setCartModal(!cartModal);
+    setCartModal(true);
     setfavoriteModal(false);
-    setShowMenu(false);
-  }
+ }
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -31,7 +30,7 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
     setfavoriteModal(true);
     setCartModal(false);
   }
-  const closeFavoriteModal = () => {
+  const onCloseFavoriteModal = () => {
     setfavoriteModal(false);
   }
   
@@ -104,14 +103,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
 
   return (
     <>
-    {cartModal && 
-    <div className='fixed inset-0' onClick={closeCartModal}></div>
-     }
-     {favoriteModal && 
-    <div className='fixed inset-0' onClick={closeFavoriteModal}></div>
-     }
-    <nav className={`section fixed top-0 flex flex-row md:flex-col gap-y-4 items-center justify-between w-screen
-    bg-white shadow-xl shadow-black py-3 px-3 z-50`}>
+    <nav className={`section fixed top-0 flex flex-row gap-y-4 items-center justify-between w-screen
+    bg-white/90 shadow-xl shadow-black py-3 px-3 z-50`}>
           <a href="#">
            <img src={logo} alt="Logo Mariana Accesorios" className='z-50 w-28 h-14 cursor-pointer'/>
           </a>
@@ -124,13 +117,13 @@ const onDeleteFavProduct = (favoriteProducts) => {
               <a href="#">Inicio</a>
             </li>
             <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
+              <a href="#news">Novedades</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#releases">Lanzamientos</a>
             </li>
             <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
-              <a href="#rings">Anillos</a>
-            </li>
-            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
-              <a href="#earrings">Aretes</a>
+              <a href="#clothes">Ropa deportiva</a>
             </li>
             <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#necklace">Collares</a>
@@ -152,11 +145,14 @@ const onDeleteFavProduct = (favoriteProducts) => {
               {
                 cartModal &&
                 <div className={`flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 ${isMobile ? "hidden" : ""}`}>
+                    <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                      <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
+                   </div>
                 {
                   allProducts.length ?
                     allProducts.map((product) => 
                       <>
-                          <div key={product.id} className='grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2'>
+                          <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2'>
                             <p className='text-xs col-span-1'>{product.quantity}</p>
                             <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
                             <p className='col-span-6'>{product.productDescription}</p>
@@ -166,7 +162,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
                       </>
                   )
                     :
-                    <p>No hay productos en el carrito</p>
+                    <p className='text-base mt-4'>No hay productos en el carrito</p>
                   
                 }
                     {allProducts.length ? 
@@ -193,13 +189,17 @@ const onDeleteFavProduct = (favoriteProducts) => {
                       {countFavProducts}
                     </p>
                   </div>
-              {favoriteModal &&
+            {
+              favoriteModal &&
               <div className={`flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 ${isMobile && "hidden"}`}>
+                  <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                      <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
+                   </div>
               {
                   allFavoriteProducts.length ?
                   allFavoriteProducts.map((favoriteProducts) => 
                     <>
-                        <div key={favoriteProducts.id} className='grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2 mb-4'>
+                        <div key={favoriteProducts.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2 mb-4'>
                           <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
                           <p className='col-span-8 flex items-center justify-center'>{favoriteProducts.productDescription}</p>
                           <MdClose onClick={() => onDeleteFavProduct (favoriteProducts)} className='col-span-2 cursor-pointer size-5 text-black hover:text-red-700'/>
@@ -207,7 +207,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
                     </>
                 )
                   :
-                  <p>No hay favoritos</p>
+                  <p className='text-base mt-4'>No hay favoritos</p>
                 }
                     {allFavoriteProducts.length ? 
                       <>
@@ -223,7 +223,6 @@ const onDeleteFavProduct = (favoriteProducts) => {
         </ul> 
         </>   
       }
-      
       {isMobile && showMenu &&
       <div className='z-50 slide-in-left fixed inset-0 flex items-center justify-center w-screen h-screen backdrop-blur-[8px] '
         onClick={toggleMenu}>
@@ -238,7 +237,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
               <a href="#rings">Anillos</a>
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>
-              <a href="#earrings">Aretes</a>
+              <a href="#clothes">Ropa deportiva</a>
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>
               <a href="#necklace">Collares</a>

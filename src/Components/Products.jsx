@@ -1,6 +1,9 @@
-import {PromotionSport, PromotionSpecial} from "./Promotions.jsx";
+import {PromotionSport, PromotionSpecial, DiscoverPromotion} from "./Promotions.jsx";
 import ProductItem from "./ProductItem.jsx";
-import data from "../data.js";
+import newProducts from "../Products/New-Products.js";
+import releaseProducts from "../Products/Release-Products.js";
+import clothesProducts from "../Products/Clothes-Products.js";
+import necklaceProducts from "../Products/Necklace-Products.js";
 
 function Products({allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, allFavoriteProducts, setAllFavoriteProducts, countFavProducts, setCountFavProducts}) {
 
@@ -38,11 +41,11 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
 
     return (
         <>
-            <div id="releases" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+            <div id="news" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
                 mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
                     {
-                        data.map(product => (
+                        newProducts.map(product => (
                             <ProductItem
                                 key={product.id}
                                 imgSrc={product.imgSrc}
@@ -56,6 +59,61 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
                     }
             </div>
             <PromotionSpecial/>
+            <div id="releases" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
+                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                    {
+                        releaseProducts.map(product => (
+                            <ProductItem
+                                key={product.id}
+                                imgSrc={product.imgSrc}
+                                category={product.category}
+                                productDescription={product.productDescription}
+                                productPrice={product.productPrice}
+                                addToCart={() => addToCart(product)} 
+                                addToFavorite={() => addToFavorites(product)}  
+                            />
+                        ))
+                    }
+            </div>
+            <PromotionSport/>
+            <div id="clothes" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
+                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                    {
+                        clothesProducts.map(product => (
+                            <ProductItem
+                                key={product.id}
+                                imgSrc={product.imgSrc}
+                                category={product.category}
+                                productDescription={product.productDescription}
+                                productPrice={product.productPrice}
+                                addToCart={() => addToCart(product)} 
+                                addToFavorite={() => addToFavorites(product)}  
+                            />
+                        ))
+                    }
+            </div>
+
+                <DiscoverPromotion/>
+                
+            <div id="necklace" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
+                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                    {
+                        necklaceProducts.map(product => (
+                            <ProductItem
+                                key={product.id}
+                                imgSrc={product.imgSrc}
+                                category={product.category}
+                                productDescription={product.productDescription}
+                                productPrice={product.productPrice}
+                                addToCart={() => addToCart(product)} 
+                                addToFavorite={() => addToFavorites(product)}  
+                            />
+                        ))
+                    }
+            </div>
         </>
     )
 }

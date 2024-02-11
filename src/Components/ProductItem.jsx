@@ -46,21 +46,21 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
                             <Notification adding={'Añadido a favoritos'}/>
                         )}
                 <div className='flex justify-center items-center mb-5'>
-                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[250px] size-[100px] transition-all 
+                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[200px] size-[80px] transition-all 
                     duration-300'/>
                 </div>
-                <div className='flex flex-col justify-center items-center text-md gap-y-5 mt-[30px]'>
-                   <strong className='text-black/50'>{category}</strong> 
+                <div className='flex flex-col justify-center items-center text-base gap-y-5 mt-[30px]'>
+                   <strong className='text-black/50 text-xs md:text-base'>{category}</strong> 
                    <span className='font-semibold text-sm md:text-lg text-black/80 flex items-center justify-center mx-auto 
                    text-center px-1'>{productDescription}</span>
-                   <span className='font-semibold text-black/90 text-xs md:text-lg'>${productPrice} MX</span>
+                   <span className='font-semibold text-black/90 text-[10px] md:text-lg'>${productPrice} MX</span>
                 </div>
                 <div className='flex flex-row justify-center items-center mt-[50px] mb-[25px]'>
-                    <img src={deliveryIcon} alt="Delivery Icon" className='size-6 md:size-10'/>
-                    <span className='font-semibold text-sm md:text-lg'>Envio</span>
+                    <img src={deliveryIcon} alt="Delivery Icon" className='size-4 md:size-10'/>
+                    <span className='font-semibold text-xs md:text-lg'>Envio</span>
                 </div>
                 <div className={hoverShopping} onClick={cartClick}>
-                    <span className='p-4 font-bold text-xs md:text-sm uppercase' >
+                    <span className='p-4 font-bold text-[9px] md:text-sm uppercase' >
                         Agregar al carrito
                     </span>
                     </div>

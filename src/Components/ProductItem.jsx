@@ -43,7 +43,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
                     }
                 </div>
                 {isFavorite && (
-                            <Notification adding={'Añaido a favoritos'}/>
+                            <Notification adding={'Añadido a favoritos'}/>
                         )}
                 <div className='flex justify-center items-center mb-5'>
                     <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[250px] size-[100px] transition-all 

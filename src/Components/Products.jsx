@@ -29,7 +29,6 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
                 }
                 return p;
             })
-            setCountFavProducts(countFavProducts + favoriteProducts.quantity);
             return setAllFavoriteProducts(newFavProducts);
         }
         setCountFavProducts(countFavProducts + favoriteProducts.quantity);

@@ -156,7 +156,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
               {
                 cartModal &&
                 <div className={`${allProducts.length ? "overflow-auto slide-in-right max-h-[600px] right-0" : ""} 
-                    flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
+                    flex flex-col mt-7 absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
                       {
                         allProducts.length ?
                         <>
@@ -217,7 +217,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
             {
               favoriteModal &&
               <div className={`${allFavoriteProducts.length ? "slide-in-right right-0 overflow-auto max-h-[600px]" : ""}
-                flex flex-col mt-5 fixed text-black bg-white shadow-black shadow-md p-5 ${isMobile && "hidden"}`}>
+                flex flex-col mt-7 fixed text-black bg-white shadow-black shadow-md p-5 ${isMobile && "hidden"}`}>
                    {
                         allFavoriteProducts.length ?
                         <>
@@ -323,8 +323,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
       <>
               {
                 isMobile && cartModal &&
-                <div id='cart-modal' className={`${allProducts.length ? "slide-in-top right-0 overflow-auto max-h-[200px]" : ""}
-                fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                <div id='cart-modal' className={`${allProducts.length ? "slide-in-top right-0 overflow-auto h-screen z-50" : "z-40 mt-[80px]"}
+                fixed top-0 left-0 right-0 flex flex-col text-black bg-white shadow-black shadow-md p-5`}>
                   {
                         allProducts.length ?
                         <>
@@ -376,8 +376,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
               {
                 favoriteModal && isMobile &&
                 <div id='cart-modal' 
-                  className={`${allFavoriteProducts.length ? "slide-in-top right-0 overflow-auto max-h-[200px]" : ""}
-                    fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                className={`${allFavoriteProducts.length ? "slide-in-top right-0 overflow-auto h-screen z-50" : "z-40 mt-[80px]"}
+                fixed top-0 left-0 right-0 flex flex-col text-black bg-white shadow-black shadow-md p-5`}>
                       {
                         allFavoriteProducts.length ?
                         <>

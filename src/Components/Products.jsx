@@ -5,7 +5,8 @@ import releaseProducts from "../Products/Release-Products.js";
 import clothesProducts from "../Products/Clothes-Products.js";
 import necklaceProducts from "../Products/Necklace-Products.js";
 
-function Products({allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, allFavoriteProducts, setAllFavoriteProducts, countFavProducts, setCountFavProducts}) {
+function Products ({allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts, allFavoriteProducts, 
+    setAllFavoriteProducts, countFavProducts, setCountFavProducts}) {
 
     const addToCart = (product) => {
         if(allProducts.find((p) => p.id === product.id)){
@@ -49,6 +50,7 @@ function Products({allProducts, setAllProducts, total, setTotal, countProducts, 
                             <ProductItem
                                 key={product.id}
                                 imgSrc={product.imgSrc}
+                                imgHover={product.imgHover}
                                 category={product.category}
                                 productDescription={product.productDescription}
                                 productPrice={product.productPrice}

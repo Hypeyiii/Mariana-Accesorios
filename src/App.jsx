@@ -42,7 +42,6 @@ function App() {
         favoriteProducts={favoriteProducts} setfavoriteProducts={setfavoriteProducts}
         allFavoriteProducts={allFavoriteProducts} setAllFavoriteProducts={setAllFavoriteProducts}
         countFavProducts={countFavProducts} setCountFavProducts={setCountFavProducts}
-        
       />  
       <LogginModal
         modalOpen={isModalOpen}

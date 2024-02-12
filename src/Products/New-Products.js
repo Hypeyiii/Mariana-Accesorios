@@ -2,6 +2,7 @@ const newProducts = [
     {
         id: 1,
         imgSrc: "https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png",
+        imgHover: "https://img.edenly.com/pt/40/saturno-n11__2315317_1.png",
         category: "Novedades" ,
         productDescription: "Anillo de Compromiso",
         productPrice : "123",   

@@ -1,19 +1,18 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import deliveryIcon from '../assets/deliveryIcon.svg';
 import heartIcon from '../assets/heartIcon.svg';
 import fillHeartIcon from '../assets/fillHeartIcon.svg';
 import Notification from '../hooks/Notification.jsx';
 
-
-function ProductItem({imgSrc, category, productDescription, productPrice, product, addToCart, addToFavorite}){
+function ProductItem({imgSrc, category, productDescription, productPrice, product, addToCart, addToFavorite, imgHover}){
 
     const [isFavorite, setIsFavorite] = useState(false);
     const [isWanted, setIsWanted] = useState(false);
 
     const [isHover, setIsHover] = useState(false);
     const hoverShopping = isHover ? 
-    "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition-all duration-500 text-center bottom-0 text-lg" : 
-    'text-black bg-pink-300/60 w-full flex justify-center text-sm text-center items-center rounded-b-lg transition-all duration-500 md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg md:transition-all md:duration-500';
+    "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition-all duration-500 text-center text-lg" : 
+    'text-black bg-pink-300/60 w-full flex justify-center text-lg text-center items-center rounded-b-lg transition-all duration-500 md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg md:transition-all md:duration-500';
     
     const handleHover = () => {
         setIsHover(true);
@@ -32,12 +31,12 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer "
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125"
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
-                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 md:active:scale-125
+                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125
                          transition-all duration-75' onClick={onFavorite}/>
-                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-7 md:active:scale-125 transition-all 
+                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125 transition-all 
                         duration-75'/>
                     }
                 </div>
@@ -45,8 +44,12 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
                             <Notification adding={'Añadido a favoritos'}/>
                         )}
                 <div className='flex justify-center items-center mb-5'>
-                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:hover:scale-105 md:size-[200px] size-[80px] transition-all 
-                    duration-300'/>
+                    {
+                        isHover ? 
+                        <img id='image' src={imgSrc} alt="Product Image" className='size-20 md:size-32 transition'/>
+                        :
+                        <img id='image' src={imgSrc} alt="Product Image" className='size-20 md:size-32 transition'/>
+                    }
                 </div>
                 <div className='flex flex-col justify-center items-center text-base gap-y-5 mt-[30px]'>
                    <strong className='text-black/50 text-xs md:text-base'>{category}</strong> 
@@ -58,7 +61,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
                     <img src={deliveryIcon} alt="Delivery Icon" className='size-4 md:size-10'/>
                     <span className='font-semibold text-xs md:text-lg'>Envio</span>
                 </div>
-                <div className={hoverShopping} onClick={cartClick}>
+                <div className={`${hoverShopping}`} onClick={cartClick}>
                     <span className='p-4 font-bold text-[9px] md:text-sm uppercase' >
                         Agregar al carrito
                     </span>

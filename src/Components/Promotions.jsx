@@ -21,22 +21,22 @@ function Promotion({openModal}){
 function PromotionSport(){
     return (
         <div className="grid mt-32 mb-32 bg-[#f6f6f6] justify-center items-center grid-cols-12 auto-rows-auto w-full
-         px-4">
-            <div className="col-span-4 md:col-span-3 flex items-center justify-center w-full h-full py-12">
+         px-4 h-[350px]">
+            <div className="col-span-4 md:col-span-3 flex items-center justify-center">
               <img src="https://i0.wp.com/elplanetaurbano.com/wp-content/uploads/2022/08/modelo-fondo-rosa-ok-3-PUMA-Stardust.jpg?fit=640%2C427&ssl=1"
-               alt="Imagen ropa deportiva" className="w-[150px] h-[100px] md:w-[300px] md:h-[250px] rounded-sm hover:scale-105 transition-all 
-               duration-700 shadow-sm shadow-black/70 hover:shadow-lg hover:shadow-black"/>
+               alt="Imagen ropa deportiva" className="w-[150px] h-[100px] md:w-[300px] md:h-[250px] rounded-sm transition-all duration-700 border
+               border-transparent hover:border-black"/>
             </div>
             <div className="col-span-8 md:col-span-6 flex items-center justify-center w-full mx-auto h-full">
-                <h1 className="text-xl md:text-4xl font-semibold text-wrap text-black/70 text-left md:text-center px-10">
+                <h1 className="text-base md:text-4xl font-semibold text-wrap text-black/70 text-left md:text-center px-10">
                 Descubre todo nuestro <span className="text-pink-300/60">catalogo </span> 
                 de ropa <span className="text-pink-300/60">deportiva.</span></h1>
             </div>
             <div className="col-span-12 md:col-span-2 flex items-center justify-center w-full h-full">
-              <button className="bg-pink-300/60 hover:bg-pink-300/80 text-white font-bold py-2 px-4 rounded-full
+              <a href="#clothes" className="bg-pink-300/60 hover:bg-pink-300/80 text-white font-bold py-2 px-4 rounded-full
               active:scale-110 active:duration-100 transition-all shadow-sm shadow-black/70 flex">
                 Ver catalogo
-              </button>
+              </a>
             </div>
         </div>
     )

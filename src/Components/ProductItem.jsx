@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import deliveryIcon from '../assets/deliveryIcon.svg';
 import heartIcon from '../assets/heartIcon.svg';
 import fillHeartIcon from '../assets/fillHeartIcon.svg';
@@ -6,7 +6,6 @@ import Notification from '../hooks/Notification.jsx';
 
 
 function ProductItem({imgSrc, category, productDescription, productPrice, product, addToCart, addToFavorite}){
-    
 
     const [isFavorite, setIsFavorite] = useState(false);
     const [isWanted, setIsWanted] = useState(false);
@@ -33,12 +32,12 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#productIMG]:hover:scale-105 "
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer "
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
-                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 active:scale-125
+                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-7 md:active:scale-125
                          transition-all duration-75' onClick={onFavorite}/>
-                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-7 active:scale-125 transition-all 
+                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-7 md:active:scale-125 transition-all 
                         duration-75'/>
                     }
                 </div>
@@ -46,7 +45,7 @@ function ProductItem({imgSrc, category, productDescription, productPrice, produc
                             <Notification adding={'Añadido a favoritos'}/>
                         )}
                 <div className='flex justify-center items-center mb-5'>
-                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:size-[200px] size-[80px] transition-all 
+                    <img src={imgSrc} alt="Product Image" id='productIMG' className='md:hover:scale-105 md:size-[200px] size-[80px] transition-all 
                     duration-300'/>
                 </div>
                 <div className='flex flex-col justify-center items-center text-base gap-y-5 mt-[30px]'>

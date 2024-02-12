@@ -13,7 +13,7 @@ function CarouselGift() {
         <img src="https://pandoramx.vtexassets.com/assets/vtex.file-manager-graphql/images/6e0ee586-b421-476e-ae50-3bbf88831090___e000096b47ac90225abd027e5910889b.gif"
          alt="..." className='w-[300px] sm:w-[400px] xl:w-[650px] h-[200px] md:h-[300px] bg-transparent
          '/>
-         <img src="https://almalatina.yanbal.com/wp-content/uploads/2021/06/Renata-flores-aretes-adan-yanbal.gif"
+         <img src="https://almalatina.yanbal.com/wp-content/uploads/2022/03/Coleccion-Tambopata.gif"
          alt="..." className='w-[300px] sm:w-[400px] xl:w-[650px] h-[200px] md:h-[300px] bg-transparent
          shadow-xl shadow-black'/>
       </Carousel>

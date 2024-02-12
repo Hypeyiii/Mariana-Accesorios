@@ -1,6 +1,6 @@
 const clothesProducts = [
     {
-        id: 1,
+        id: 11,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5445.png",
         category: "Ropa" ,
         productDescription: "Playera Blanca",
@@ -8,7 +8,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 2,
+        id: 12,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png",
         category: "Ropa" ,
         productDescription: "Playera Negra",
@@ -16,7 +16,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 3,
+        id: 13,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5446.png",
         category: "Ropa" ,
         productDescription: "Playera Azul",
@@ -24,7 +24,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 4,
+        id: 14,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5448.png",
         category: "Ropa" ,
         productDescription: "Playera Roja",
@@ -32,7 +32,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 5,
+        id: 15,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5449.png",
         category: "Ropa" ,
         productDescription: "Playera Amarilla",

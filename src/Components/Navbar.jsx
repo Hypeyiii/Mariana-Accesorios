@@ -2,7 +2,7 @@ import './Menu.css'
 import '../index.css'
 import logo from '../assets/logo.png';
 import { HiShoppingCart } from "react-icons/hi";
-import { FaUser } from "react-icons/fa6";
+import { FaHeart, FaHeartCrack, FaUser } from "react-icons/fa6";
 import { MdClose, MdFavorite } from "react-icons/md";
 import { useState, useEffect } from 'react';
 import { FiMenu } from "react-icons/fi";
@@ -16,6 +16,17 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
     setCartModal(true);
     setfavoriteModal(false);
  }
+
+ const [showHeart, setShowHeart] = useState(false);
+
+  const onShowBrokenHeart = () => {
+    setShowHeart(true);
+ }
+
+ const onNotShowHeart = () => {
+  setShowHeart(false);
+ }
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -144,41 +155,55 @@ const onDeleteFavProduct = (favoriteProducts) => {
               </a>
               {
                 cartModal &&
-                <div className={`flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 ${isMobile ? "hidden" : ""}`}>
-                    <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
-                      <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
-                   </div>
-                {
-                  allProducts.length ?
-                    allProducts.map((product) => 
-                      <>
-                          <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2'>
-                            <p className='text-xs col-span-1'>{product.quantity}</p>
-                            <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
-                            <p className='col-span-6'>{product.productDescription}</p>
-                            <p className='col-span-2'>${product.productPrice}</p>
-                            <MdClose onClick={() => onDeleteProduct (product)} className='col-span-1 cursor-pointer size-5 text-black hover:text-red-700'/>
+                <div className={`${allProducts.length ? "overflow-auto slide-in-right max-h-[600px] right-0" : ""} 
+                    flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
+                      {
+                        allProducts.length ?
+                        <>
+                        <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
                           </div>
-                      </>
-                  )
-                    :
-                    <p className='text-base mt-4'>No hay productos en el carrito</p>
-                  
-                }
+                          <div className='flex flex-row gap-x-2 items-center jusitfy-center mx-auto'>
+                            <HiShoppingCart/>
+                            <p className='flex mx-auto font-bold text-sm'>Carrito de compras</p>
+                          </div></>
+                        : ""
+                      }
+                    {
+                        allProducts.length ?
+                        allProducts.map((product) => 
+                            <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
+                                <p className='text-xs col-span-1'>{product.quantity}</p>
+                                <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
+                                <p className='col-span-6'>{product.productDescription}</p>
+                                <p className='col-span-2'>${product.productPrice}</p>
+                                <MdClose onClick={() => onDeleteProduct(product)} className='col-span-1 cursor-pointer size-5 text-black hover:text-red-700'/>
+                            </div>
+                        )
+                        :
+                        <>
+                          <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
+                          </div>
+                          <p className='text-base mt-1'>No hay productos en el Carrito</p>
+                       </>
+                    }
                     {allProducts.length ? 
-                      <>
-                          <div className='flex flex-row justify-center items-center gap-x-2 mt-2 text-sm p-2 mb-6'>
-                            <p>Total:</p>
-                            <p>${total}</p> 
-                        </div>
-                        <button className='absolute bottom-0 left-0 right-0 flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
-                           hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
-                          Vaciar Carrito
-                        </button>
-                       </>                  
-                    : ""}
-                   </div>
+                        <>
+                            <div className='flex flex-row justify-between mx-auto items-center gap-x-2 mt-2 text-sm p-2 mb-6'>
+                                <p>Total:</p>
+                                <p>${total}</p> 
+                            </div>
+                            <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
+                                Vaciar Carrito
+                            </button>
+                        </>
+                        : ""
+                    }
+                </div>
               }
+
             </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1 hover:text-black' onClick={openFavoriteModal}>
               <a href="#favorites">
@@ -191,27 +216,52 @@ const onDeleteFavProduct = (favoriteProducts) => {
                   </div>
             {
               favoriteModal &&
-              <div className={`flex flex-col mt-5 absolute text-black bg-white shadow-black shadow-md p-5 ${isMobile && "hidden"}`}>
-                  <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
-                      <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
-                   </div>
+              <div className={`${allFavoriteProducts.length ? "slide-in-right right-0 overflow-auto max-h-[600px]" : ""}
+                flex flex-col mt-5 fixed text-black bg-white shadow-black shadow-md p-5 ${isMobile && "hidden"}`}>
+                   {
+                        allFavoriteProducts.length ?
+                        <>
+                        <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
+                         </div>
+                          <div className='flex flex-row gap-x-2 items-center jusitfy-center mx-auto'>
+                            <FaHeart/>
+                            <p className='flex mx-auto font-bold text-sm'>Favoritos</p>
+                          </div>
+                        </>
+                        : ""
+                      }
               {
                   allFavoriteProducts.length ?
                   allFavoriteProducts.map((favoriteProducts) => 
                     <>
-                        <div key={favoriteProducts.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2 mb-4'>
+                        <div key={favoriteProducts.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
                           <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
                           <p className='col-span-8 flex items-center justify-center'>{favoriteProducts.productDescription}</p>
-                          <MdClose onClick={() => onDeleteFavProduct (favoriteProducts)} className='col-span-2 cursor-pointer size-5 text-black hover:text-red-700'/>
+                          <div className='col-span-2' >
+                            {
+                              showHeart ?
+                              <FaHeartCrack onClick={() => onDeleteFavProduct (favoriteProducts)} onMouseEnter={onShowBrokenHeart} onMouseLeave={onNotShowHeart} 
+                                className='cursor-pointer size-4 text-black hover:text-red-700'/>
+                              :
+                              <FaHeart onClick={() => onDeleteFavProduct (favoriteProducts)} onMouseEnter={onShowBrokenHeart} onMouseLeave={onNotShowHeart} 
+                                className='cursor-pointer size-4 text-black hover:text-red-700'/>
+                            }
+                          </div>
                         </div>
                     </>
                 )
                   :
-                  <p className='text-base mt-4'>No hay favoritos</p>
+                  <>
+                  <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                      <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
+                   </div>
+                  <p className='text-base mt-1'>No hay favoritos</p>
+                  </>
                 }
                     {allFavoriteProducts.length ? 
                       <>
-                        <button className='absolute bottom-0 left-0 right-0 flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
+                        <button className='flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
                            hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllFavorites}>
                           Quitar Favoritos
                         </button>
@@ -273,7 +323,21 @@ const onDeleteFavProduct = (favoriteProducts) => {
       <>
               {
                 isMobile && cartModal &&
-                <div id='cart-modal' className={`fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                <div id='cart-modal' className={`${allProducts.length ? "slide-in-top right-0 overflow-auto max-h-[200px]" : ""}
+                fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                  {
+                        allProducts.length ?
+                        <>
+                        <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
+                          </div>
+                          <div className='flex flex-row gap-x-2 items-center jusitfy-center mx-auto mb-2'>
+                            <HiShoppingCart className='size-3'/>
+                            <p className='flex mx-auto font-bold text-xs'>Carrito de compras</p>
+                          </div>
+                        </>
+                        : ""
+                      }
                   {
                     allProducts.length ?
                       allProducts.map((product) => 
@@ -288,8 +352,12 @@ const onDeleteFavProduct = (favoriteProducts) => {
                         </>
                     )
                       :
+                      <>
+                      <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
+                      </div>
                       <p>No hay productos en el carrito</p>
-                    
+                      </>
                   }
                     {allProducts.length ? 
                       <>
@@ -297,7 +365,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
                             <p>Total:</p>
                             <p>${total}</p> 
                         </div>
-                        <button className='absolute bottom-0 left-0 right-0 flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
+                        <button className='flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
                            hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
                           Vaciar Carrito
                         </button>
@@ -307,7 +375,22 @@ const onDeleteFavProduct = (favoriteProducts) => {
               }
               {
                 favoriteModal && isMobile &&
-                <div id='cart-modal' className={`fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                <div id='cart-modal' 
+                  className={`${allFavoriteProducts.length ? "slide-in-top right-0 overflow-auto max-h-[200px]" : ""}
+                    fixed mt-[80px] top-0 left-0 right-0 flex flex-col mt-5text-black bg-white shadow-black shadow-md p-5`}>
+                      {
+                        allFavoriteProducts.length ?
+                        <>
+                          <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
+                         </div>
+                          <div className='flex flex-row gap-x-2 items-center jusitfy-center mx-auto mb-4'>
+                            <FaHeart className='size-3'/>
+                            <p className='flex mx-auto font-bold text-xs'>Favoritos</p>
+                          </div>
+                        </>
+                        : ""
+                      }
                   {
                     allFavoriteProducts.length ?
                     allFavoriteProducts.map((favoriteProducts) => 
@@ -320,12 +403,16 @@ const onDeleteFavProduct = (favoriteProducts) => {
                       </>
                   )
                     :
-                    <p>No hay favoritos</p>
-                    
+                    <>
+                    <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
+                          </div>
+                      <p>No hay favoritos</p>
+                    </>
                   }
                     {allFavoriteProducts.length ? 
                       <>
-                        <button className='absolute bottom-0 left-0 right-0 flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
+                        <button className='flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
                            hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllFavorites}>
                           Quitar Favoritos
                         </button>

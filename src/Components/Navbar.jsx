@@ -124,7 +124,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
           <FiMenu className="z-50 text-3xl cursor-pointer" onClick={toggleMenu} />
          :
          <>
-            <ul className='flex flex-row justify-between items-center gap-x-8 mx-auto text-xl [&>li]:transition-all [&>li]:duration-300 text-black/70'>
+            <ul className='flex flex-row justify-between items-center gap-x-8 mx-auto text-sm xl:text-lg [&>li]:transition-all [&>li]:duration-300 text-black/70'>
             <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#">Inicio</a>
             </li>

@@ -11,7 +11,7 @@ const [selectedImage, setSelectedImage] = useState(img);
 
   return (
     <>
-        <div className="fixed top-0 right-0 left-0 bottom-0 bg-black/50" onClick={onClose}></div>
+        <div className="fixed top-0 right-0 left-0 bottom-0 bg-black/50 z-40" onClick={onClose}></div>
             <div className="scale-in-center fixed mx-auto inset-0 top-16 w-[350px] md:w-9/12 h-[550px] overflow-y-auto md:h-fit py-[50px] shadow-2xl shadow-black
                  bg-white m-auto items-center justify-center grid grid-cols-12 gap-x-2 border-2 border-black gap-y-2 px-2 z-40">
                 <div className='col-span-12 flex items-center justify-center'>

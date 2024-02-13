@@ -112,6 +112,9 @@ const onDeleteFavProduct = (favoriteProducts) => {
   setAllFavoriteProducts(results);
   setCountFavProducts(countFavProducts - favoriteProducts.quantity);
 }
+const onBuyCart = () => {
+  console.log('Comprando...');
+}
 
   return (
     <>
@@ -195,10 +198,16 @@ const onDeleteFavProduct = (favoriteProducts) => {
                                 <p>Total:</p>
                                 <p>${total}.00 MX</p> 
                             </div>
+                            <div className='flex flex-row gap-x-2 w-full items-center justify-center '>
                             <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
-                                hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
+                                hover:bg-pink-300/60 hover:text-black w-full' onClick={onRemoveAllCart}>
                                 Vaciar Carrito
                             </button>
+                            <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                hover:bg-pink-300/60 hover:text-black w-full' onClick={onBuyCart}>
+                                Comprar Carrito
+                            </button>
+                            </div>
                         </>
                         : ""
                     }

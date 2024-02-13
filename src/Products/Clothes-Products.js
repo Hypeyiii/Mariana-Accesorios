@@ -1,6 +1,6 @@
 const clothesProducts = [
     {
-        id: 11,
+        id: 21,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5445.png",
         category: "Ropa" ,
         productName: "Playera Blanca",
@@ -8,7 +8,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 12,
+        id: 22,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png",
         category: "Ropa" ,
         productName: "Playera licra blanca",
@@ -16,7 +16,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 13,
+        id: 23,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5446.png",
         category: "Ropa" ,
         productName: "Playera Negra",
@@ -24,7 +24,7 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 14,
+        id: 24,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5448.png",
         category: "Ropa" ,
         productName: "Playera Gris",
@@ -32,12 +32,52 @@ const clothesProducts = [
         quantity: 1,
     },
     {
-        id: 15,
+        id: 25,
         imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5449.png",
         category: "Ropa" ,
         productName: "Playera Roja",
         productPrice : "170",
         quantity: 1,
     },
+    {
+        id: 26,
+        imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5450.png",
+        category: "Ropa" ,
+        productName: "Playera Azul",
+        productPrice : "160",
+        quantity: 1,
+    },
+    {
+        id: 27,
+        imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5451.png",
+        category: "Ropa" ,
+        productName: "Playera Negra",
+        productPrice : "140",
+        quantity: 1,
+    },
+    {
+        id: 28,
+        imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5452.png",
+        category: "Ropa" ,
+        productName: "Playera Blanca",
+        productPrice : "130",
+        quantity: 1,
+    },
+    {
+        id: 29,
+        imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5453.png",
+        category: "Ropa" ,
+        productName: "Playera Rosa",
+        productPrice : "120",
+        quantity: 1,
+    },
+    {
+        id: 30,
+        imgSrc: "https://pngimg.com/uploads/tshirt/tshirt_PNG5454.png",
+        category: "Ropa" ,
+        productName: "Playera Verde",
+        productPrice : "110",
+        quantity: 1,
+    }
 ]
 export default clothesProducts;

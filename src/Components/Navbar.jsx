@@ -8,7 +8,8 @@ import { useState, useEffect } from 'react';
 import { FiMenu } from "react-icons/fi";
 
 
-function NavBar({openModal, allProducts, total, countProducts, setAllProducts, setTotal, setCountProducts, allFavoriteProducts, setAllFavoriteProducts, countFavProducts, setCountFavProducts}) {
+function NavBar({openModal, allProducts, total, countProducts, setAllProducts, setTotal, setCountProducts, allFavoriteProducts, 
+    setAllFavoriteProducts, countFavProducts, setCountFavProducts, openInfoModal}) {
 
   const[cartModal, setCartModal] = useState(false);
 
@@ -74,7 +75,7 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
       sections.forEach(function(section, index) {
         var top = section.offsetTop;
         var bottom = top + section.offsetHeight;
-        if (window.scrollY + 128 >= top && window.scrollY < bottom) {
+        if (window.scrollY + 200 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
             item.classList.remove('border-b-pink-300');
           });
@@ -115,7 +116,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
   return (
     <>
     <nav className={`section fixed top-0 flex flex-row gap-y-4 items-center justify-between w-screen
-    bg-white/90 shadow-xl shadow-black py-3 px-3 z-50`}>
+    bg-white/90 border-b-2 border-b-black py-3 px-3 z-30`}>
           <a href="#">
            <img src={logo} alt="Logo Mariana Accesorios" className='z-50 w-28 h-14 cursor-pointer'/>
           </a>
@@ -172,11 +173,11 @@ const onDeleteFavProduct = (favoriteProducts) => {
                     {
                         allProducts.length ?
                         allProducts.map((product) => 
-                            <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
+                            <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
                                 <p className='text-xs col-span-1'>{product.quantity}</p>
-                                <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
-                                <p className='col-span-6'>{product.productDescription}</p>
-                                <p className='col-span-2'>${product.productPrice}</p>
+                                <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2 cursor-pointer' onClick={()=>openInfoModal(product)}/>
+                                <p className='col-span-6 flex items-center justify-center'>{product.productName}</p>
+                                <p className='col-span-2 text-xs'>${product.productPrice}.00 MX</p>
                                 <MdClose onClick={() => onDeleteProduct(product)} className='col-span-1 cursor-pointer size-5 text-black hover:text-red-700'/>
                             </div>
                         )
@@ -192,7 +193,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
                         <>
                             <div className='flex flex-row justify-between mx-auto items-center gap-x-2 mt-2 text-sm p-2 mb-6'>
                                 <p>Total:</p>
-                                <p>${total}</p> 
+                                <p>${total}.00 MX</p> 
                             </div>
                             <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
                                 hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
@@ -236,8 +237,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
                   allFavoriteProducts.map((favoriteProducts) => 
                     <>
                         <div key={favoriteProducts.id} className='mt-4 grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
-                          <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
-                          <p className='col-span-8 flex items-center justify-center'>{favoriteProducts.productDescription}</p>
+                          <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2 cursor-pointer ' onClick={()=>openInfoModal(favoriteProducts)}/>
+                          <p className='col-span-8 flex items-center justify-center'>{favoriteProducts.productName}</p>
                           <div className='col-span-2' >
                             {
                               showHeart ?
@@ -344,8 +345,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
                         <>
                             <div key={product.id} className='grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2'>
                               <p className='text-xs col-span-1'>{product.quantity}</p>
-                              <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
-                              <p className='col-span-6'>{product.productDescription}</p>
+                              <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2' onClick={()=>openInfoModal(product)}/>
+                              <p className='col-span-6'>{product.productName}</p>
                               <p className='col-span-2'>${product.productPrice}</p>
                               <MdClose onClick={() => onDeleteProduct (product)} className='col-span-1 cursor-pointer size-5 text-black hover:text-red-700'/>
                             </div>
@@ -396,8 +397,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
                     allFavoriteProducts.map((favoriteProducts) => 
                       <>
                           <div key={favoriteProducts.id} className='grid grid-cols-12 items-center justify-center w-[350px] gap-x-2 text-sm hover:bg-gray-100 border-y-[1px] p-2 mb-4'>
-                            <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2'/>
-                            <p className='col-span-8'>{favoriteProducts.productDescription}</p>
+                            <img src={favoriteProducts.imgSrc} alt="Product" className='size-[30px] col-span-2' onClick={()=>openInfoModal(favoriteProducts)}/>
+                            <p className='col-span-8'>{favoriteProducts.productName}</p>
                             <MdClose onClick={() => onDeleteFavProduct (favoriteProducts)} className='col-span-2 cursor-pointer size-5 text-black hover:text-red-700'/>
                           </div>
                       </>

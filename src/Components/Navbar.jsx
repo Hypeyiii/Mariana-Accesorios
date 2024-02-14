@@ -362,10 +362,16 @@ const onDeleteFavProduct = (favoriteProducts) => {
                             <p>Total:</p>
                             <p>${total}</p> 
                         </div>
-                        <button className='flex w-full bg-black text-white text-sm p-2 items-center justify-center transition
-                           hover:bg-pink-300/60 hover:text-black' onClick={onRemoveAllCart}>
-                          Vaciar Carrito
-                        </button>
+                        <div className='flex flex-row gap-x-2 w-full items-center justify-center px-4'>
+                              <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                  hover:bg-pink-300/60 hover:text-black w-full' onClick={onRemoveAllCart}>
+                                  Vaciar Carrito
+                              </button>
+                              <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                  hover:bg-pink-300/60 hover:text-black w-full' onClick={onBuyCart}>
+                                  Comprar Carrito
+                              </button>
+                              </div>
                        </>                  
                     : ""}
                    </div>

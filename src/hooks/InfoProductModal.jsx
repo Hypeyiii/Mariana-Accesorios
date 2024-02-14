@@ -14,7 +14,7 @@ const [selectedImage, setSelectedImage] = useState(img);
         <div className="fixed top-0 right-0 left-0 bottom-0 bg-black/50 z-40" onClick={onClose}></div>
             <div className="scale-in-center fixed mx-auto inset-0 top-16 md:top-0 w-[350px] md:w-9/12 h-[80%] overflow-y-auto py-[50px] shadow-2xl shadow-black
                  bg-white m-auto items-center justify-center grid grid-cols-12 gap-x-2 border-2 border-black gap-y-2 px-2 z-50">
-                <div className='col-span-12 flex items-center justify-center'>
+                <div className='col-span-12 absolute top-0 flex items-center justify-center w-full mt-2'>
                     <h1 className='text-lg md:text-2xl font-bold text-black/80'>Detalles del Producto</h1>
                 </div>
                 <MdClose className="absolute top-2 right-2 size-6 md:size-10 text-3xl cursor-pointer text-pink-300 hover:text-red-600 hover:bg-gray-200 z-50" 

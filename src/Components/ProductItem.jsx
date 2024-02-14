@@ -1,8 +1,9 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import deliveryIcon from '../assets/deliveryIcon.svg';
 import heartIcon from '../assets/heartIcon.svg';
 import fillHeartIcon from '../assets/fillHeartIcon.svg';
 import Notification from '../hooks/Notification.jsx';
+import './Product.css';
 
 function ProductItem({imgSrc, category, productName, productPrice, product, addToCart, addToFavorite, openInfoProductModal}){
 
@@ -28,10 +29,16 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
         addToFavorite(product);
         setIsFavorite(true);
     }
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+          setIsWanted(false);
+        }, 2000)
+        return () => clearTimeout(timeout);
+        }, []  ); 
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125"
+                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125 relative"
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col'>
                         {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125
@@ -40,9 +47,6 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
                         duration-75'/>
                     }
                 </div>
-                {isFavorite && (
-                            <Notification adding={'Añadido a favoritos'}/>
-                        )}
                 <div className='flex justify-center text-center items-center mb-5' onClick={openInfoProductModal}>
                     {
                         isHover ? 
@@ -63,13 +67,35 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
                 </div>
                 <div className={`${hoverShopping}`} onClick={cartClick}>
                     <span className='p-4 font-bold text-[9px] md:text-sm uppercase' >
-                        Agregar al carrito
+                        {
+                            isWanted ? 'Añadido' : 'Añadir al carrito'
+                        }
                     </span>
                     </div>
-                    {isWanted && ( <Notification adding={'Añadido a carrito'}/>
-                    )}
             </div>
         </>
     )
 }
 export default ProductItem;
+
+function Added ({added}) {
+    const [modalVisible, setModalVisible] = useState(true);
+
+    useEffect(() => {
+    const timeout = setTimeout(() => {
+      setModalVisible(false);
+    }, 2000)
+    return () => clearTimeout(timeout);
+    
+    }, []  ); 
+    return (
+            <>
+        {
+            modalVisible && (
+                <div id='container' className='container absolute top-[-25px] right-[-25px] text-xs p-1 text-black'>
+                    {added}
+                </div>
+        )}
+            </>
+    )
+}

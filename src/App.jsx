@@ -11,6 +11,8 @@ import ProductItem from './Components/ProductItem.jsx';
 import releaseProducts from './Products/Release-Products.js';
 import clothesProducts from './Products/Clothes-Products.js';
 import necklaceProducts from './Products/Necklace-Products.js';
+import BuyingModal from './hooks/BuyingModal.jsx';
+import IndividualBuyModal from './hooks/IndividualBuyModal.jsx'
 
 function App() {
   const [favoriteProducts, setfavoriteProducts] = useState([]);
@@ -22,9 +24,31 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
+  const[cartModal, setCartModal] = useState(false);
+
+  const openCartModal = () => {
+    setCartModal(true);
+    setfavoriteModal(false);
+ }
+
+ const [favoriteModal, setfavoriteModal] = useState(false);
+
+  const openFavoriteModal = () => {
+    setfavoriteModal(true);
+    setCartModal(false);
+  }
+  const closeCartModal = () => {
+    setCartModal(false);
+  }
+
+  const onCloseFavoriteModal = () => {
+    setfavoriteModal(false);
+  }
+
   const addToModal = (product) => {
     setSelectedProduct(product);
     setIsInfoModalOpen(true);
+    setIsBuyingOnce(false)
   }
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -61,11 +85,43 @@ function App() {
     setTotal(total + product.productPrice * product.quantity)
     setAllProducts([...allProducts, product])
 }
+const [isProductBuying, setIsProductBuying] = useState(null);
+
+const onBuyCart = () => {
+  setIsProductBuying(true);
+  setCartModal(false);
+}
+const handleClose = () => {
+  setIsProductBuying(false)
+}
+const removeFromCart = (product) => {
+  const newProducts = allProducts.map((p) => {
+      if(p.id === product.id){
+          return {...p, quantity: p.quantity - 1}
+      }
+      return p;
+  }).filter((p) => p.quantity > 0);
+  setCountProducts(countProducts - 1);
+  setTotal(total - product.productPrice)
+  setAllProducts(newProducts);
+}
+
+const [isBuyingOnce, setIsBuyingOnce]=useState(false)
+
+const onBuyOne = () => {
+  setIsBuyingOnce(true)
+  setIsInfoModalOpen(false)
+}
+
+const onCloseOnce = () =>{
+  setIsBuyingOnce(false)
+}
 
   return (
     <>
       <CarouselGift/>
       <Header 
+        onBuyCart={onBuyCart}
         openInfoModal={addToModal}
         openModal={openModal}
         allProducts={allProducts} setAllProducts={setAllProducts}
@@ -74,7 +130,24 @@ function App() {
         favoriteProducts={favoriteProducts} setfavoriteProducts={setfavoriteProducts}
         allFavoriteProducts={allFavoriteProducts} setAllFavoriteProducts={setAllFavoriteProducts}
         countFavProducts={countFavProducts} setCountFavProducts={setCountFavProducts}
+        openCartModal={openCartModal}
+        openFavoriteModal={openFavoriteModal}
+        cartModal={cartModal}
+        favoriteModal={favoriteModal}
+        closeCartModal={closeCartModal}
+        onCloseFavoriteModal={onCloseFavoriteModal}
         />
+        {
+          isProductBuying && (
+            <BuyingModal
+              handleClose={handleClose}
+              allProducts={allProducts}
+              openInfoModal={addToModal}
+              onDeleteProduct={removeFromCart}
+              total={total}
+            />
+          )
+        }
 
       <Promotion
         openModal={openModal}
@@ -184,6 +257,20 @@ function App() {
             addToCart={() => addToCart(selectedProduct)}
             addToFavorite={() => addToFavorites(selectedProduct)}
             size={selectedProduct.size}
+            onBuyOne={onBuyOne}
+          />
+        )
+      }
+      {
+        isBuyingOnce && (
+          <IndividualBuyModal
+            back={() => addToModal(selectedProduct)}
+            onCloseOnce={onCloseOnce}
+            productName={selectedProduct.productName}
+            img={selectedProduct.imgSrc}
+            allProducts={allProducts}
+            price={selectedProduct.productPrice}
+            quantity={selectedProduct.quantity}
           />
         )
       }

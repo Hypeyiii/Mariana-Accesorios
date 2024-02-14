@@ -9,14 +9,9 @@ import { FiMenu } from "react-icons/fi";
 
 
 function NavBar({openModal, allProducts, total, countProducts, setAllProducts, setTotal, setCountProducts, allFavoriteProducts, 
-    setAllFavoriteProducts, countFavProducts, setCountFavProducts, openInfoModal}) {
+    setAllFavoriteProducts, countFavProducts, setCountFavProducts, openInfoModal, onBuyCart, openCartModal, cartModal, openFavoriteModal, favoriteModal, onCloseFavoriteModal
+  , closeCartModal}) {
 
-  const[cartModal, setCartModal] = useState(false);
-
-  const openCartModal = () => {
-    setCartModal(true);
-    setfavoriteModal(false);
- }
 
  const [showHeart, setShowHeart] = useState(false);
 
@@ -32,19 +27,7 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   }
-  const closeCartModal = () => {
-    setCartModal(false);
-  }
 
-  const [favoriteModal, setfavoriteModal] = useState(false);
-
-  const openFavoriteModal = () => {
-    setfavoriteModal(true);
-    setCartModal(false);
-  }
-  const onCloseFavoriteModal = () => {
-    setfavoriteModal(false);
-  }
   
   const [showMenu, setShowMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -112,9 +95,6 @@ const onDeleteFavProduct = (favoriteProducts) => {
   setAllFavoriteProducts(results);
   setCountFavProducts(countFavProducts - favoriteProducts.quantity);
 }
-const onBuyCart = () => {
-  console.log('Comprando...');
-}
 
   return (
     <>
@@ -159,7 +139,7 @@ const onBuyCart = () => {
               </a>
               {
                 cartModal &&
-                <div className={`${allProducts.length ? "overflow-auto slide-in-right max-h-[600px] right-0" : ""} 
+                <div className={`${allProducts.length ? "slide-in-right right-0 top-0 fixed h-screen w-2/6" : ""} 
                     flex flex-col mt-7 absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
                       {
                         allProducts.length ?
@@ -173,14 +153,19 @@ const onBuyCart = () => {
                           </div></>
                         : ""
                       }
+                    <div className='h-5/6 overflow-y-auto'>
                     {
                         allProducts.length ?
-                        allProducts.map((product) => 
-                            <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center gap-x-2 text-sm hover:bg-gray-100 border-t-[1px] p-2'>
-                                <p className='text-xs col-span-1'>{product.quantity}</p>
-                                <img src={product.imgSrc} alt="Product" className='size-[30px] col-span-2 cursor-pointer' onClick={()=>openInfoModal(product)}/>
-                                <p className='col-span-6 flex items-center justify-center'>{product.productName}</p>
-                                <p className='col-span-2 text-xs'>${product.productPrice}.00 MX</p>
+                        
+                            allProducts.map((product) => 
+                            <div key={product.id} className='mt-4 grid grid-cols-12 items-center justify-center gap-x-2 text-sm hover:bg-gray-100 
+                                border-t-[1px] p-2'>
+                                <p className='text-xs col-span-1 font-bold'>{product.quantity}</p>
+                                <div className='col-span-2 flex items-center justify-center'>
+                                 <img src={product.imgSrc} alt="Product" className='size-[75px] cursor-pointer' onClick={()=>openInfoModal(product)}/>
+                                </div>
+                                <p className='col-span-6 flex items-center justify-center text-base font-semibold text-black/70'>{product.productName}</p>
+                                <p className='col-span-2 text-xs font-semibold text-black/85'>${product.productPrice}.00 MX</p>
                                 <MdClose onClick={() => onDeleteProduct(product)} className='col-span-1 cursor-pointer size-5 text-black hover:text-red-700'/>
                             </div>
                         )
@@ -190,27 +175,29 @@ const onBuyCart = () => {
                             <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={closeCartModal}/>
                           </div>
                           <p className='text-base mt-1'>No hay productos en el Carrito</p>
-                       </>
+                       </> 
                     }
-                    {allProducts.length ? 
-                        <>
-                            <div className='flex flex-row justify-between mx-auto items-center gap-x-2 mt-2 text-sm p-2 mb-6'>
-                                <p>Total:</p>
-                                <p>${total}.00 MX</p> 
-                            </div>
-                            <div className='flex flex-row gap-x-2 w-full items-center justify-center '>
-                            <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
-                                hover:bg-pink-300/60 hover:text-black w-full' onClick={onRemoveAllCart}>
-                                Vaciar Carrito
-                            </button>
-                            <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
-                                hover:bg-pink-300/60 hover:text-black w-full' onClick={onBuyCart}>
-                                Comprar Carrito
-                            </button>
-                            </div>
-                        </>
-                        : ""
-                    }
+                    </div>
+                      {allProducts.length ? 
+                          <><div className='h-1/6 flex flex-col gap-y-4 border-t-2 border-t-black fixed bottom-0 right-0 left-0 bg-[#f6f6f6]'>
+                              <div className='flex flex-row justify-between mx-auto items-center gap-x-2 mt-2 text-sm'>
+                                  <p>Total:</p>
+                                  <p>${total}.00 MX</p> 
+                              </div>
+                              <div className='flex flex-row gap-x-2 w-full items-center justify-center px-4'>
+                              <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                  hover:bg-pink-300/60 hover:text-black w-full' onClick={onRemoveAllCart}>
+                                  Vaciar Carrito
+                              </button>
+                              <button className='flex bg-black text-white text-sm p-2 items-center justify-center transition
+                                  hover:bg-pink-300/60 hover:text-black w-full' onClick={onBuyCart}>
+                                  Comprar Carrito
+                              </button>
+                              </div>
+                          </div></>
+                          : ""
+                      }
+                    
                 </div>
               }
 
@@ -232,7 +219,7 @@ const onBuyCart = () => {
                         allFavoriteProducts.length ?
                         <>
                         <div className='absolute top-0 right-0 p-1 flex items-center justify-end'>
-                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={onCloseFavoriteModal}/>
+                            <MdClose className='hover:bg-gray-300 hover:text-red-600' onClick={()=>onCloseFavoriteModal}/>
                          </div>
                           <div className='flex flex-row gap-x-2 items-center jusitfy-center mx-auto'>
                             <FaHeart/>

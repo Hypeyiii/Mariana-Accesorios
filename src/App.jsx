@@ -6,13 +6,10 @@ import LogginModal from './hooks/LogginModal.jsx';
 import { useState } from 'react';
 import { Promotion, PromotionSpecial, DiscoverPromotion, PromotionSport } from './Components/Promotions.jsx';
 import InfoProductModal from './hooks/InfoProductModal.jsx';
-import newProducts from './Products/New-Products.js';
-import ProductItem from './Components/ProductItem.jsx';
-import releaseProducts from './Products/Release-Products.js';
-import clothesProducts from './Products/Clothes-Products.js';
-import necklaceProducts from './Products/Necklace-Products.js';
+import {newProducts, releaseProducts, clothesProducts, necklaceProducts} from './Products/Products.jsx';
 import BuyingModal from './hooks/BuyingModal.jsx';
 import IndividualBuyModal from './hooks/IndividualBuyModal.jsx'
+import ProductItem from './Components/ProductItem.jsx';
 
 function App() {
   const [favoriteProducts, setfavoriteProducts] = useState([]);

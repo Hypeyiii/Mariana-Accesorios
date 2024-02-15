@@ -20,6 +20,7 @@ function App() {
   const [countProducts, setCountProducts] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  
 
   const[cartModal, setCartModal] = useState(false);
 
@@ -75,7 +76,7 @@ function App() {
             return p;
         })
         setCountProducts(countProducts + product.quantity);
-    setTotal(total + product.productPrice * product.quantity)
+        setTotal(total + product.productPrice * product.quantity)
         return setAllProducts(newProducts);
     }
     setCountProducts(countProducts + product.quantity);
@@ -156,15 +157,16 @@ const onCloseOnce = () =>{
                         newProducts.map(product => (
                             <>
                                 <ProductItem
-                                key={product.id}
-                                imgSrc={product.imgSrc}
-                                imgHover={product.imgHover}
-                                category={product.category}
-                                productName={product.productName}
-                                productPrice={product.productPrice}
-                                addToCart={() => addToCart(product)} 
-                                addToFavorite={() => addToFavorites(product)} 
-                                openInfoProductModal={() => addToModal(product)}
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  imgHover={product.imgHover}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)}
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
                             />
                             </>
                         ))
@@ -178,15 +180,16 @@ const onCloseOnce = () =>{
                         releaseProducts.map(product => (
                             <>
                                 <ProductItem
-                                key={product.id}
-                                imgSrc={product.imgSrc}
-                                imgHover={product.imgHover}
-                                category={product.category}
-                                productName={product.productName}
-                                productPrice={product.productPrice}
-                                addToCart={() => addToCart(product)} 
-                                addToFavorite={() => addToFavorites(product)} 
-                                openInfoProductModal={() => addToModal(product)}
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  imgHover={product.imgHover}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)} 
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
                             />
                             </>
                         ))
@@ -200,15 +203,16 @@ const onCloseOnce = () =>{
                         clothesProducts.map(product => (
                             <>
                                 <ProductItem
-                                key={product.id}
-                                imgSrc={product.imgSrc}
-                                imgHover={product.imgHover}
-                                category={product.category}
-                                productName={product.productName}
-                                productPrice={product.productPrice}
-                                addToCart={() => addToCart(product)} 
-                                addToFavorite={() => addToFavorites(product)} 
-                                openInfoProductModal={() => addToModal(product)}
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  imgHover={product.imgHover}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)} 
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
                             />
                             </>
                         ))
@@ -222,15 +226,16 @@ const onCloseOnce = () =>{
                         necklaceProducts.map(product => (
                             <>
                                 <ProductItem
-                                key={product.id}
-                                imgSrc={product.imgSrc}
-                                imgHover={product.imgHover}
-                                category={product.category}
-                                productName={product.productName}
-                                productPrice={product.productPrice}
-                                addToCart={() => addToCart(product)} 
-                                addToFavorite={() => addToFavorites(product)} 
-                                openInfoProductModal={() => addToModal(product)}
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  imgHover={product.imgHover}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)} 
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
                             />
                             </>
                         ))

@@ -26,9 +26,9 @@ function IndividualBuyModal({onCloseOnce, productName, img, back, price, quantit
     })
     return(
         <>
-            <div className="fixed inset-0 w-screen h-screen bg-black/90 text-white z-40" onClick={onCloseOnce}></div>
+            <div className="fixed inset-0 w-screen h-screen bg-black/50 md:bg-black/80 text-white z-40" onClick={onCloseOnce}></div>
             <div className="scale-in-center fixed top-0 right-0 left-0 bottom-0 m-auto items-center justify-start bg-white w-[95%] md:w-[27%] 
-                h-2/3 md:h-[90%] z-50 overflow-y-auto shadow-2xl shadow-black/70 flex flex-col gap-y-4 gap-x-4 px-4
+                h-[90%] z-50 overflow-y-auto shadow-2xl shadow-black/70 flex flex-col gap-y-4 gap-x-4 px-4
                 rounded-t-sm rounded-b-sm" onMouseEnter={isHovering} onMouseLeave={isNotHovering}>
                     <div className="absolute top-0 left-0 bg-white/50 p-4 z-50 cursor-pointer" onClick={back}>
                         <MdArrowBackIosNew className="size-6 hover:bg-gray-200 transition text-pink-300 hover:text-red-500"/>

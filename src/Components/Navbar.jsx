@@ -94,6 +94,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
   const results = allFavoriteProducts.filter((p) => p.id !== favoriteProducts.id);
   setAllFavoriteProducts(results);
   setCountFavProducts(countFavProducts - favoriteProducts.quantity);
+  setIsFavorite(false);
 }
 
   return (
@@ -139,8 +140,8 @@ const onDeleteFavProduct = (favoriteProducts) => {
               </a>
               {
                 cartModal &&
-                <div className={`${allProducts.length ? "slide-in-right right-0 top-0 fixed h-screen w-2/6" : ""} 
-                    flex flex-col mt-7 absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
+                <div className={`${allProducts.length ? "slide-in-right right-0 top-0 fixed h-screen w-2/6" : "mt-7"} 
+                    flex flex-col absolute text-black bg-white shadow-black shadow-md p-5 z-50   ${isMobile ? "hidden" : ""}`}>
                       {
                         allProducts.length ?
                         <>
@@ -271,7 +272,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
         </>   
       }
       {isMobile && showMenu &&
-      <div className='z-50 slide-in-left fixed inset-0 flex items-center justify-center w-screen h-screen backdrop-blur-[8px] '
+      <div className='z-50 slide-in-left fixed inset-0 flex items-center justify-center w-screen h-screen backdrop-blur-[2px] bg-gray-300/50'
         onClick={toggleMenu}>
         <ul className='absolute flex flex-col gap-y-3 justify-between items-center text-lg font-bold'>
             <li className='border border-transparent hover:border-b-pink-300 py-1'>

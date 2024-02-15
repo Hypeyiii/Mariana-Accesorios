@@ -2,15 +2,14 @@ import {useState, useEffect} from 'react'
 import deliveryIcon from '../assets/deliveryIcon.svg';
 import heartIcon from '../assets/heartIcon.svg';
 import fillHeartIcon from '../assets/fillHeartIcon.svg';
-import Notification from '../hooks/Notification.jsx';
 import './Product.css';
 
-function ProductItem({imgSrc, category, productName, productPrice, product, addToCart, addToFavorite, openInfoProductModal}){
+function ProductItem({imgSrc, category, productName, productPrice, product, addToCart, openInfoProductModal, addToFavorite}){
 
-    const [isFavorite, setIsFavorite] = useState(false);
     const [isWanted, setIsWanted] = useState(false);
-
+    const [isFavorite, setIsFavorite] = useState(false);
     const [isHover, setIsHover] = useState(false);
+
     const hoverShopping = isHover ? 
     "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition text-center text-lg" : 
     'text-black bg-pink-300/60 w-full flex justify-center text-lg text-center items-center rounded-b-lg transition md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg';
@@ -25,22 +24,31 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
         addToCart(product);
         setIsWanted(true);
     }
+    useEffect(() => {
+        let timeout;
+        if (isWanted) {
+          timeout = setTimeout(() => {
+            setIsWanted(false);
+          }, 1500);
+        }
+        return () => clearTimeout(timeout);
+      }, [isWanted]); 
+
     const onFavorite = () => {
-        addToFavorite(product);
-        setIsFavorite(true);
+        setIsFavorite(!isFavorite);
     }
     useEffect(() => {
-        const timeout = setTimeout(() => {
-          setIsWanted(false);
-        }, 2000)
-        return () => clearTimeout(timeout);
-        }, []  ); 
+        if(product.isFavorite){
+            setIsFavorite(true);
+        }
+    }
+    , [product.isFavorite])
     return(
         <>
             <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
                 shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125 relative"
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
-                    <div className='grow justify-end flex items-end p-3 flex-col'>
+                    <div className='grow justify-end flex items-end p-3 flex-col' onClick={addToFavorite}>
                         {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125
                          transition-all duration-75' onClick={onFavorite}/>
                         : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125 transition-all 
@@ -77,25 +85,3 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
     )
 }
 export default ProductItem;
-
-function Added ({added}) {
-    const [modalVisible, setModalVisible] = useState(true);
-
-    useEffect(() => {
-    const timeout = setTimeout(() => {
-      setModalVisible(false);
-    }, 2000)
-    return () => clearTimeout(timeout);
-    
-    }, []  ); 
-    return (
-            <>
-        {
-            modalVisible && (
-                <div id='container' className='container absolute top-[-25px] right-[-25px] text-xs p-1 text-black'>
-                    {added}
-                </div>
-        )}
-            </>
-    )
-}

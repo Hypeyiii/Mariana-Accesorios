@@ -6,8 +6,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { useState } from 'react';
 
 function InfoProductModal({onClose, img, name, category, price, addToCart, addToFavorite, size, onBuyOne}) {
-const [selectedImage, setSelectedImage] = useState(img); 
-
+const [selectedImage, setSelectedImage] = useState(img);
 
   return (
     <>

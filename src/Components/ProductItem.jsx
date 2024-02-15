@@ -3,6 +3,7 @@ import deliveryIcon from '../assets/deliveryIcon.svg';
 import heartIcon from '../assets/heartIcon.svg';
 import fillHeartIcon from '../assets/fillHeartIcon.svg';
 import './Product.css';
+import { FaHeart } from 'react-icons/fa6';
 
 function ProductItem({imgSrc, category, productName, productPrice, product, addToCart, openInfoProductModal, addToFavorite}){
 
@@ -49,18 +50,14 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
                 shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125 relative"
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col' onClick={addToFavorite}>
-                        {isFavorite ? <img src={fillHeartIcon} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125
-                         transition-all duration-75' onClick={onFavorite}/>
-                        : <img src={heartIcon} onClick={onFavorite} alt="Heart Icon" className='size-5 md:size-7 md:active:scale-125 transition-all 
-                        duration-75'/>
-                    }
-                </div>
+                        <FaHeart className='size-4 md:size-5 cursor-pointer text-pink-300/60' onClick={onFavorite}/>
+                    </div>
                 <div className='flex justify-center text-center items-center mb-5' onClick={openInfoProductModal}>
                     {
                         isHover ? 
-                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-32 transition'/>
+                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-36 transition'/>
                         :
-                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-32 transition'/>
+                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-36 transition'/>
                     }
                 </div>
                 <div className='flex flex-col justify-center items-center text-base gap-y-5 mt-[30px]'>
@@ -69,12 +66,12 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
                    text-center px-1'>{productName}</span>
                    <span className='font-semibold text-black/90 text-[10px] md:text-lg'>${productPrice}.00 MX</span>
                 </div>
-                <div className='flex flex-row justify-center items-center mt-[50px] mb-[25px]'>
+                <div className='flex flex-row justify-center items-center mt-[50px] mb-[50px]'>
                     <img src={deliveryIcon} alt="Delivery Icon" className='size-4 md:size-10'/>
                     <span className='font-semibold text-xs md:text-lg'>Envio</span>
                 </div>
-                <div className={`${hoverShopping}`} onClick={cartClick}>
-                    <span className='p-4 font-bold text-[9px] md:text-sm uppercase' >
+                <div className={`${hoverShopping} relative bottom-0`} onClick={cartClick}>
+                    <span className='p-2 md:p-4 font-bold text-[9px] md:text-sm uppercase ' >
                         {
                             isWanted ? 'Añadido' : 'Añadir al carrito'
                         }

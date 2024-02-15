@@ -3,13 +3,14 @@ import Header from './Components/Navbar.jsx';
 import CarouselGift from './Components/CarouselGift.jsx';
 import './index.css';
 import LogginModal from './hooks/LogginModal.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Promotion, PromotionSpecial, DiscoverPromotion, PromotionSport } from './Components/Promotions.jsx';
 import InfoProductModal from './hooks/InfoProductModal.jsx';
 import {newProducts, releaseProducts, clothesProducts, necklaceProducts} from './Products/Products.jsx';
 import BuyingModal from './hooks/BuyingModal.jsx';
 import IndividualBuyModal from './hooks/IndividualBuyModal.jsx'
 import ProductItem from './Components/ProductItem.jsx';
+import Notification from './hooks/Notification.jsx';
 
 function App() {
   const [favoriteProducts, setfavoriteProducts] = useState([]);
@@ -58,8 +59,10 @@ function App() {
             }
             return item;
         })
+        setIsFavorite(true);
         return setAllFavoriteProducts(newFavProducts);
     }
+    setIsFavorite(true);
     setCountFavProducts(countFavProducts + favoriteProducts.quantity);
     setAllFavoriteProducts([...allFavoriteProducts, favoriteProducts])
   }
@@ -77,13 +80,31 @@ function App() {
         })
         setCountProducts(countProducts + product.quantity);
         setTotal(total + product.productPrice * product.quantity)
+        setIsWanted(true);
         return setAllProducts(newProducts);
     }
+    setIsWanted(true);
     setCountProducts(countProducts + product.quantity);
     setTotal(total + product.productPrice * product.quantity)
     setAllProducts([...allProducts, product])
 }
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setIsWanted(false);
+  }, 2000)
+  return () => clearTimeout(timeout);
+  
+},); 
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setIsFavorite(false);
+  }, 2000)
+  return () => clearTimeout(timeout);
+  
+},); 
+
 const [isProductBuying, setIsProductBuying] = useState(null);
+
 
 const onBuyCart = () => {
   setIsProductBuying(true);
@@ -105,6 +126,8 @@ const removeFromCart = (product) => {
 }
 
 const [isBuyingOnce, setIsBuyingOnce]=useState(false)
+const [isWanted, setIsWanted] = useState(false)
+const [isFavorite, setIsFavorite] = useState(false)
 
 const onBuyOne = () => {
   setIsBuyingOnce(true)
@@ -146,13 +169,8 @@ const onCloseOnce = () =>{
             />
           )
         }
-
-      <Promotion
-        openModal={openModal}
-      />
               <div id="news" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
-                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
                     {
                         newProducts.map(product => (
                             <>
@@ -174,8 +192,7 @@ const onCloseOnce = () =>{
             </div>
       <PromotionSpecial/>
       <div id="releases" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
-                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
                     {
                         releaseProducts.map(product => (
                             <>
@@ -195,10 +212,11 @@ const onCloseOnce = () =>{
                         ))
                     }
             </div>
-      <PromotionSport/>
+      <Promotion
+      openModal={openModal}
+      />
       <div id="clothes" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
-                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
                     {
                         clothesProducts.map(product => (
                             <>
@@ -220,8 +238,7 @@ const onCloseOnce = () =>{
             </div>
       <DiscoverPromotion/>
       <div id="necklace" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto w-[350px] sm:w-[550px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px]
-                mt-[100px] gap-x-5 gap-y-10 md:px-4 px-1"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
                     {
                         necklaceProducts.map(product => (
                             <>
@@ -273,6 +290,25 @@ const onCloseOnce = () =>{
             allProducts={allProducts}
             price={selectedProduct.productPrice}
             quantity={selectedProduct.quantity}
+          />
+        )
+      }{
+        isWanted && (
+          <Notification
+            modalVisible={isWanted}
+            setModalVisible={setIsWanted}
+            modalOpen={isWanted}
+            adding={"Añadido al carrito"}
+          />
+        )
+      }
+      {
+        isFavorite && (
+          <Notification
+            modalVisible={isFavorite}
+            setModalVisible={setIsFavorite}
+            modalOpen={isFavorite}
+            adding={"Añadido a favoritos"}
           />
         )
       }

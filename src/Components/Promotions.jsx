@@ -35,7 +35,7 @@ function PromotionSport(){
             </div>
             <div className="col-span-12 md:col-span-2 flex items-center justify-center w-full h-full">
               <a href="#clothes" className="bg-pink-300/60 hover:bg-black/80 hover:text-white text-black/60 font-bold py-2 px-4 rounded-xl
-              active:scale-110 active:duration-100 transition shadow-sm shadow-black/70 flex">
+              active:scale-110 active:duration-100 transition shadow-sm shadow-black/70 flex text-sm md:text-base">
                 Ver catalogo
               </a>
             </div>
@@ -117,7 +117,6 @@ function PromotionSpecial(){
 }
     const DiscoverPromotion = () => {
     const [time, setIsTime] = useState(true);
-    const [time1, setIsTime2] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -127,16 +126,8 @@ function PromotionSpecial(){
         return () => clearInterval(interval);
       }, []);
 
-      useEffect(() => {
-        const interval = setInterval(() => {
-            setIsTime2(prevTime => !prevTime);
-        }, 5000);
-    
-        return () => clearInterval(interval);
-      }, []);
-
     return(
-        <div className="grid grid-cols-12 items-center justify-center mx-auto gap-4 mt-24 w-[350px] md:w-[1100px]">
+        <div className="grid grid-cols-12 items-center justify-center mx-auto gap-4 mt-24 w-full md:w-[75%]">
             <div className="flex flex-col justify-center items-center md:items-start md:jusitfy-start col-span-12 md:col-span-3 text-xl font-semibold">
                 <h1 className="text-base">Descubre Mariana Accesorios</h1>
                 <p className="text-sm font-light">Joyeria que necesitas</p>
@@ -145,13 +136,12 @@ function PromotionSpecial(){
                 <a href={`${time ? "#news" : "#clothes"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
-                        { time && 
+                        { time ? 
                             <>
                                 <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
                             </>
-                        }
-                        { time1 && 
+                            :
                             <>
                                 <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Ropa deportiva</p>
@@ -162,13 +152,12 @@ function PromotionSpecial(){
                 <a href={`${time ? "#releases" : "#necklace"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
-                        { time && 
+                        { time ? 
                             <>
                                 <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
                             </>
-                        }
-                        { time1 && 
+                            :
                             <>
                                 <img src="https://eurostore.melaniemartinezmusic.com/on/demandware.static/-/Sites-warner-master/default/dw15b356c9/pdp-img-eu/Melanie%20Martinez/October%202023%20Merch/Portals%20Necklace.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Collares</p>
@@ -179,33 +168,31 @@ function PromotionSpecial(){
                 <a href={`${time ? "#clothes" : "#news"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
-                        { time1 && 
-                        <>
-                            <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
-                            <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
-                        </>
-                        }
-                        { time && 
-                        <>
-                            <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
-                            <p className="text-base border-b-2 border-b-pink-300">Ropa deportiva</p>
-                        </>
+                        { time ? 
+                            <>
+                                <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Ropa deportiva</p>
+                            </>
+                            :
+                            <>
+                                <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
+                            </>
                         }
                     </div>
                 </a>
                 <a href={`${time ? "#necklace" : "#releases"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
-                        { time1 && 
-                            <>
-                                <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
-                                <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
-                            </>
-                        }
-                        { time && 
+                        { time ? 
                             <>
                                 <img src="https://eurostore.melaniemartinezmusic.com/on/demandware.static/-/Sites-warner-master/default/dw15b356c9/pdp-img-eu/Melanie%20Martinez/October%202023%20Merch/Portals%20Necklace.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Collares</p>
+                            </>
+                            :
+                            <>
+                                <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
                             </>
                         }
                     </div>

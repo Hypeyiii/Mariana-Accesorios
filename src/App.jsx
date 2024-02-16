@@ -157,12 +157,23 @@ function App() {
     setIsBuyingOnce(false);
   };
   // Convertir los precios a enteros
-newProducts.forEach(product => {
-  if (typeof product.productPrice === "string") {
-    // Verificar si el precio es una cadena y luego convertirlo a un entero
-    product.productPrice = parseInt(product.productPrice);
+  newProducts.forEach((product) => {
+    if (typeof product.productPrice === "string") {
+      // Verificar si el precio es una cadena y luego convertirlo a un entero
+      product.productPrice = parseInt(product.productPrice);
+    }
+  });
+
+  const [isBuyingAll, setIsBuyingAll ] = useState(false);
+
+  const onBuyAll = () => {
+    setIsBuyingAll(true);
+    setIsProductBuying(false);
+  };
+  const onCloseBuyAll = () => {
+    setIsBuyingAll(false);
+    setIsProductBuying(true);
   }
-});
   return (
     <>
       <CarouselGift />
@@ -189,6 +200,12 @@ newProducts.forEach(product => {
         closeCartModal={closeCartModal}
         onCloseFavoriteModal={onCloseFavoriteModal}
       />
+      {isBuyingAll && (
+        <Elements stripe={stripePromise}>
+          <CheckoutForm price={total} onBuy={onCloseBuyAll} />
+        </Elements>
+      )}
+
       {isProductBuying && (
         <BuyingModal
           handleClose={handleClose}
@@ -196,6 +213,7 @@ newProducts.forEach(product => {
           openInfoModal={addToModal}
           onDeleteProduct={removeFromCart}
           total={total}
+          onBuy={onBuyAll}
         />
       )}
       <div

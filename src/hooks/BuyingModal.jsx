@@ -1,13 +1,7 @@
 import { MdClose } from "react-icons/md";
 import "../Components/Menu.css";
 import { FaTrash } from "react-icons/fa6";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../Components/CheckoutForm";
-import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(
-  "pk_test_51OkKmsBlx8QfT450Ul1ORZbvVVbcd0KEcWAPLHj5mP9P6BORvJ47mS9WFgDoC9ytYntZqMdNL3ITReBzaOkB3NOu00FOpmewfm"
-);
 
 function BuyingModal({
   handleClose,
@@ -15,6 +9,7 @@ function BuyingModal({
   openInfoModal,
   onDeleteProduct,
   total,
+  onBuy
 }) 
 
 {
@@ -80,9 +75,9 @@ function BuyingModal({
           <p>Total</p>
           <p>${total}.00 MX</p>
         </div>
-        <Elements stripe={stripePromise}>
-          <CheckoutForm price={total} />
-        </Elements>
+        <button className="p-3 bg-black text-white hover:bg-pink-300/60 hover:text-white transition" onClick={onBuy}>
+          Comprar ahora
+        </button>
       </div>
     </>
   );

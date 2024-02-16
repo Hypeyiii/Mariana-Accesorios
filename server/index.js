@@ -1,6 +1,6 @@
-const stripe = require('stripe');
-const express = require('express');
-const cors = require('cors');
+import stripe from 'stripe';
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
@@ -12,20 +12,21 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 app.post('/api/checkout', async (req, res) => {
     try {
         const { id, amount } = req.body;
-    const payment = await Stripe.paymentIntents.create({
-        amount,
-        currency: 'MXN',
-        payment_method: id,
-    });
-    console.log(payment);
-    res.send({message: "Successful Payment"});
+        const payment = await Stripe.paymentIntents.create({
+            amount,
+            currency: 'MXN',
+            payment_method: id,
+        });
+        console.log(payment);
+        res.send({ message: "Successful Payment" });
         
     } catch (error) {
         console.log(error);
-        res.json({message: error.raw.message});
+        res.status(500).json({ message: error.raw.message });
     }
 });
 
-
-
-app.listen(5174, () => console.log('Listening on port', 5174));
+const PORT = process.env.PORT || 5174;
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});

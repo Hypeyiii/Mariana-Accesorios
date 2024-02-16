@@ -4,13 +4,14 @@ import CarouselGift from './Components/CarouselGift.jsx';
 import './index.css';
 import LogginModal from './hooks/LogginModal.jsx';
 import { useState, useEffect } from 'react';
-import { Promotion, PromotionSpecial, DiscoverPromotion, PromotionSport } from './Components/Promotions.jsx';
+import { Promotion, PromotionSpecial, DiscoverPromotion, PromotionSport, PhotoPromotion} from './Components/Promotions.jsx';
 import InfoProductModal from './hooks/InfoProductModal.jsx';
-import {newProducts, releaseProducts, clothesProducts, necklaceProducts} from './Products/Products.jsx';
+import {newProducts, releaseProducts, clothesProducts, necklaceProducts, glassesProducts, ringProducts} from './Products/Products.jsx';
 import BuyingModal from './hooks/BuyingModal.jsx';
 import IndividualBuyModal from './hooks/IndividualBuyModal.jsx'
 import ProductItem from './Components/ProductItem.jsx';
 import Notification from './hooks/Notification.jsx';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 
 function App() {
   const [favoriteProducts, setfavoriteProducts] = useState([]);
@@ -33,7 +34,7 @@ function App() {
  const [favoriteModal, setfavoriteModal] = useState(false);
 
   const openFavoriteModal = () => {
-    setfavoriteModal(true);
+    setfavoriteModal(true); 
     setCartModal(false);
   }
   const closeCartModal = () => {
@@ -47,7 +48,7 @@ function App() {
   const addToModal = (product) => {
     setSelectedProduct(product);
     setIsInfoModalOpen(true);
-    setIsBuyingOnce(false)
+    setIsBuyingOnce(false);
   }
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -137,7 +138,6 @@ const onBuyOne = () => {
 const onCloseOnce = () =>{
   setIsBuyingOnce(false)
 }
-
   return (
     <>
       <CarouselGift/>
@@ -170,14 +170,14 @@ const onCloseOnce = () =>{
           )
         }
               <div id="news" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
                     {
                         newProducts.map(product => (
                             <>
                                 <ProductItem
                                   key={product.id}
                                   imgSrc={product.imgSrc}
-                                  imgHover={product.imgHover}
+                                  hoverSrc={product.hoverSrc}
                                   category={product.category}
                                   productName={product.productName}
                                   productPrice={product.productPrice}
@@ -192,14 +192,14 @@ const onCloseOnce = () =>{
             </div>
       <PromotionSpecial/>
       <div id="releases" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
                     {
                         releaseProducts.map(product => (
                             <>
                                 <ProductItem
                                   key={product.id}
                                   imgSrc={product.imgSrc}
-                                  imgHover={product.imgHover}
+                                  hoverSrc={product.hoverSrc}
                                   category={product.category}
                                   productName={product.productName}
                                   productPrice={product.productPrice}
@@ -216,14 +216,14 @@ const onCloseOnce = () =>{
       openModal={openModal}
       />
       <div id="clothes" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
                     {
                         clothesProducts.map(product => (
                             <>
                                 <ProductItem
                                   key={product.id}
                                   imgSrc={product.imgSrc}
-                                  imgHover={product.imgHover}
+                                  hoverSrc={product.hoverSrc}
                                   category={product.category}
                                   productName={product.productName}
                                   productPrice={product.productPrice}
@@ -238,14 +238,58 @@ const onCloseOnce = () =>{
             </div>
       <DiscoverPromotion/>
       <div id="necklace" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-x-5 gap-y-10 px-4"> 
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
                     {
                         necklaceProducts.map(product => (
                             <>
                                 <ProductItem
                                   key={product.id}
                                   imgSrc={product.imgSrc}
-                                  imgHover={product.imgHover}
+                                  hoverSrc={product.hoverSrc}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)} 
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
+                            />
+                            </>
+                        ))
+                    }
+            </div>
+            <PromotionSport/>
+            <div id="glasses" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
+                    {
+                        glassesProducts.map(product => (
+                            <>
+                                <ProductItem
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  hoverSrc={product.hoverSrc}
+                                  category={product.category}
+                                  productName={product.productName}
+                                  productPrice={product.productPrice}
+                                  addToCart={() => addToCart(product)} 
+                                  addToFavorite={() => addToFavorites(product)} 
+                                  openInfoProductModal={() => addToModal(product)}
+                                  product={product}
+                            />
+                            </>
+                        ))
+                    }
+            </div>
+            <PhotoPromotion/>
+            <div id="rings" className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"> 
+                    {
+                        ringProducts.map(product => (
+                            <>
+                                <ProductItem
+                                  key={product.id}
+                                  imgSrc={product.imgSrc}
+                                  hoverSrc={product.hoverSrc}
                                   category={product.category}
                                   productName={product.productName}
                                   productPrice={product.productPrice}

@@ -1,19 +1,17 @@
 import {useState, useEffect} from 'react'
 import deliveryIcon from '../assets/deliveryIcon.svg';
-import heartIcon from '../assets/heartIcon.svg';
-import fillHeartIcon from '../assets/fillHeartIcon.svg';
 import './Product.css';
 import { FaHeart } from 'react-icons/fa6';
 
-function ProductItem({imgSrc, category, productName, productPrice, product, addToCart, openInfoProductModal, addToFavorite}){
+function ProductItem({imgSrc,hoverSrc, category, productName, productPrice, product, addToCart, openInfoProductModal, addToFavorite}){
 
     const [isWanted, setIsWanted] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
     const [isHover, setIsHover] = useState(false);
 
     const hoverShopping = isHover ? 
-    "w-full flex justify-center items-center bg-pink-300/60 rounded-b-lg transition text-center text-lg" : 
-    'text-black bg-pink-300/60 w-full flex justify-center text-lg text-center items-center rounded-b-lg transition md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center md:rounded-b-lg';
+    "w-full flex justify-center items-center bg-pink-300/60 transition text-center text-lg" : 
+    'text-black bg-pink-300/60 w-full flex justify-center text-lg text-center items-center rounded-b-lg transition md:text-[#f6f6f6] md:bg-[#f6f6f6] md:w-full md:flex md:justify-center md:items-center';
     
     const handleHover = () => {
         setIsHover(true);
@@ -30,7 +28,7 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
         if (isWanted) {
           timeout = setTimeout(() => {
             setIsWanted(false);
-          }, 1500);
+          }, 2000);
         }
         return () => clearTimeout(timeout);
       }, [isWanted]); 
@@ -46,22 +44,22 @@ function ProductItem({imgSrc, category, productName, productPrice, product, addT
     , [product.isFavorite])
     return(
         <>
-            <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] rounded-lg 
-                shadow-lg hover:shadow-black/80 transition-all duration-500 cursor-pointer [&>div>#image]:hover:scale-125 relative"
+            <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] md:hover:bg-[#ffffff] 
+                shadow-lg hover:shadow-black/80 transition duration-100 cursor-pointer [&>div>#image]:hover:scale-110 relative"
                 onMouseEnter={handleHover} onMouseLeave={handleHoverLeave}>
                     <div className='grow justify-end flex items-end p-3 flex-col' onClick={addToFavorite}>
                         <FaHeart className='size-4 md:size-5 cursor-pointer text-pink-300/60' onClick={onFavorite}/>
                     </div>
-                <div className='flex justify-center text-center items-center mb-5' onClick={openInfoProductModal}>
+                <div className='flex justify-center text-center items-center mb-5 size-20 md:size-36 mx-auto' onClick={openInfoProductModal}>
                     {
                         isHover ? 
-                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-36 transition'/>
+                        <img id='image' src={imgSrc} alt={productName} className='transition'/>
                         :
-                        <img id='image' src={imgSrc} alt={productName} className='size-20 md:size-36 transition'/>
+                        <img id='image' src={imgSrc} alt={productName} className='transition'/>
                     }
                 </div>
                 <div className='flex flex-col justify-center items-center text-base gap-y-5 mt-[30px]'>
-                   <strong className='text-black/50 text-xs md:text-base'>{category}</strong> 
+                   <strong className='text-black/50 text-xs md:text-base mt-2'>{category}</strong> 
                    <span className='font-semibold text-sm md:text-lg text-black/80 flex items-center justify-center mx-auto 
                    text-center px-1'>{productName}</span>
                    <span className='font-semibold text-black/90 text-[10px] md:text-lg'>${productPrice}.00 MX</span>

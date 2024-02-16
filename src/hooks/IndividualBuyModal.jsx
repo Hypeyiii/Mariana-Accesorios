@@ -81,7 +81,7 @@ function IndividualBuyModal({onCloseOnce, productName, img, back, price, quantit
                         </div>
                     </div>
                 </div>
-                    <button className="relative mt-5 mb-5 bottom-0 bg-black text-white hover:bg-pink-300/60 hover:text-black transition w-full py-4 flex flex-row gap-x-3 items-center justify-center">
+                    <button className="absolute bottom-0 bg-black text-white hover:bg-pink-300/60 hover:text-black transition w-full py-4 flex flex-row gap-x-3 items-center justify-center">
                          <FiShoppingCart/>
                         <p>Comprar Ahora</p>
                     </button>

@@ -19,32 +19,32 @@ const [selectedImage, setSelectedImage] = useState(img);
                 <MdClose className="absolute top-2 right-2 size-6 md:size-10 text-3xl cursor-pointer text-pink-300 hover:text-red-600 hover:bg-gray-200 z-50" 
                     onClick={onClose}/>
                     <div className=' col-span-12 md:col-span-2 flex flex-row md:flex-col gap-2 md:gap-4 items-center justify-center md:h-full'>
-                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-1/2 md:border bg-[#f6f6f6] w-3/4
+                        <div className='flex flex-col gap-2 items-center justify-center p-2  md:border bg-[#f6f6f6] size-2/4 
                              border-black/5 md:border-black/5 hover:border-black/60 hover:shadow-md hover:shadow-black/60 md:hover:scale-105 transition'
                              onClick={()=>setSelectedImage(img)}>
-                            <img src={img} alt="Image" className='size-8/12 md:size-[50px]'/>
+                            <img src={img} alt="Image" className=''/>
                             <p className='text-[8px] border-b-[1px] md:border-b-2 border-b-pink-300 text-center'>Vista frontal</p>
                         </div>
-                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-1/2 md:border bg-[#f6f6f6] w-3/4
+                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-2/4  md:border bg-[#f6f6f6]
                             md:border-black/5 hover:border-black/60 hover:shadow-md hover:shadow-black/60 md:hover:scale-105 transition'
                             onClick={()=>setSelectedImage(img)}>
-                            <img src={img} alt="Image" className='size-8/12 md:size-[50px]'/>
+                            <img src={img} alt="Image" className=''/>
                             <p className='text-[8px] border-b-[1px] md:border-b-2 border-b-pink-300 text-center'>Vista lateral</p>
                         </div>
-                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-1/2 md:border bg-[#f6f6f6] w-3/4
+                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-2/4  md:border bg-[#f6f6f6]
                             md:border-black/5 hover:border-black/60 hover:shadow-md hover:shadow-black/60 md:hover:scale-105 transition'>
-                            <img src={img} alt="Image" className='size-8/12 md:size-[50px]' onClick={()=>setSelectedImage(img)}/>
+                            <img src={img} alt="Image" className='' onClick={()=>setSelectedImage(img)}/>
                             <p className='text-[8px] border-b-[1px] md:border-b-2 border-b-pink-300 text-center'>Vista lateral</p>
                         </div>
-                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-1/2 md:border bg-[#f6f6f6] w-3/4 
+                        <div className='flex flex-col gap-2 items-center justify-center p-2 size-2/4  md:border bg-[#f6f6f6] 
                             md:border-black/5 hover:border-black/60 hover:shadow-md hover:shadow-black/60 md:hover:scale-105 transition'>
-                            <img src={img} alt="Image" className='size-8/12 md:size-[50px]' onClick={()=>setSelectedImage(img)}/>
+                            <img src={img} alt="Image" className='' onClick={()=>setSelectedImage(img)}/>
                             <p className='text-[8px] border-b-[1px] md:border-b-2 border-b-pink-300 text-center'>Vista trasera</p>
                         </div>
                     </div>
                     <div className=' col-span-12 md:col-span-6 flex items-center justify-center md:bg-[#f6f6f6] [&>img]:hover:scale-100
                         md:border md:border-black/10 h-full flex-col'>
-                        <img src={selectedImage} alt={`${name} Image`} className='size-[150px] md:size-[400px] transition md:scale-90 cursor-zoom-in'/>
+                        <img src={selectedImage} alt={`${name} Image`} className='transition md:scale-90 cursor-zoom-in'/>
                     </div>
                     <div className='h-full col-span-12 md:col-span-4 flex flex-col gap-y-4 items-center justify-center px-4'>
                         <p className='text-black/80 text-sm md:text-base border-b-[1px] md:border-b-2 border-b-pink-300'>{category}</p>

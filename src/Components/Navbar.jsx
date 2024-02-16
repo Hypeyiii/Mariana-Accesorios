@@ -61,9 +61,11 @@ function NavBar({openModal, allProducts, total, countProducts, setAllProducts, s
         if (window.scrollY + 200 >= top && window.scrollY < bottom) {
             navItems.forEach(function(item) {
             item.classList.remove('border-b-pink-300');
+            item.classList.remove('font-bold');
           });
           if (navItems[index]) {
             navItems[index].classList.add('border-b-pink-300');
+            navItems[index].classList.add('font-bold');
           }
         }
       });
@@ -124,6 +126,12 @@ const onDeleteFavProduct = (favoriteProducts) => {
             <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
               <a href="#necklace">Collares</a>
             </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
+              <a href="#glasses">Lentes</a>
+            </li>
+            <li className='item border border-transparent hover:border-b-pink-300 py-1 hover:text-black'>
+              <a href="#rings">Anillos</a>
+            </li>
             <li className='border border-transparent hover:border-b-pink-300 py-1 hover:text-black' onClick={openModal}>
               <a href="#user">
               <FaUser className='size-6 transition hover:scale-110'/>
@@ -163,7 +171,7 @@ const onDeleteFavProduct = (favoriteProducts) => {
                                 border-t-[1px] p-2'>
                                 <p className='text-xs col-span-1 font-bold'>{product.quantity}</p>
                                 <div className='col-span-2 flex items-center justify-center'>
-                                 <img src={product.imgSrc} alt="Product" className='size-[75px] cursor-pointer' onClick={()=>openInfoModal(product)}/>
+                                 <img src={product.imgSrc} alt="Product" className='size-full cursor-pointer' onClick={()=>openInfoModal(product)}/>
                                 </div>
                                 <p className='col-span-6 flex items-center justify-center text-base font-semibold text-black/70'>{product.productName}</p>
                                 <p className='col-span-2 text-xs font-semibold text-black/85'>${product.productPrice}.00 MX</p>

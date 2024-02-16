@@ -46,15 +46,15 @@ function PromotionSport(){
 function PromotionSpecial(){
     return(
     <>  
-        <div className="grid grid-cols-6 auto-rows-auto w-[400px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
-         2xl:w-[1350px] items-center justify-center mx-auto mt-[120px] mb-5 gap-x-10 gap-y-10"
+        <div className="grid grid-cols-6 auto-rows-auto w-[350px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
+         2xl:w-[1350px] items-center justify-center mx-auto mt-[120px] mb-5 gap-5 md:gap-10"
          id='earrings'>
             <div className="col-span-6 lg:col-span-2 w-[300px] flex flex-col gap-y-6 justify-start items-start mx-auto">
                 <h1 className="text-xs md:text-sm font-medium text-black/90">¡CORRE, QUE VUELAN!</h1>
                 <p className="text-xl md:text-2xl font-semibold md:font-bold text-black/85">PARA CADA MOMENTO ESPECIAL</p>
             </div>
             <div className="col-span-6 lg:col-span-4 md:grid-cols-6 grid-cols-4 row-auto grid justify-center items-center
-             gap-y-6 md:gap-y-10 rounded-md mx-auto w-[350px] md:w-full">
+             gap-y-5 md:gap-y-10 rounded-md mx-auto w-full">
                     <div className="col-span-2 md:col-span-2 flex flex-col items-center justify-center bg-[#f6f6f6] hover:shadow-lg mx-auto
                     hover:shadow-black/50 transition-all duration-300 w-[150px] h-[150px] xl:w-[250px] xl:h-[250px] ">
                         <img src="https://pandoramx.vtexassets.com/assets/vtex.file-manager-graphql/images/1a73daf5-5c93-4cc4-a6b0-4d0023f7b455___09c2230fb4614d3697a1062a9b4b8a29.jpg" 
@@ -132,30 +132,14 @@ function PromotionSpecial(){
                 <h1 className="text-base">Descubre Mariana Accesorios</h1>
                 <p className="text-sm font-light">Joyeria que necesitas</p>
             </div>
-            <div className="col-span-12 md:col-span-9 grid grid-cols-4 gap-4">
-                <a href={`${time ? "#news" : "#clothes"}`} className="col-span-2 md:col-span-1">
+            <div className="col-span-12 md:col-span-9 grid grid-cols-4 md:grid-cols-6 gap-4 mx-auto">
+                <a href={`${time ? "#news" : "#necklace"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
                         { time ? 
                             <>
                                 <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
-                            </>
-                            :
-                            <>
-                                <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
-                                <p className="text-base border-b-2 border-b-pink-300">Ropa deportiva</p>
-                            </>
-                        }
-                    </div>
-                </a>
-                <a href={`${time ? "#releases" : "#necklace"}`} className="col-span-2 md:col-span-1">
-                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
-                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
-                        { time ? 
-                            <>
-                                <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
-                                <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
                             </>
                             :
                             <>
@@ -165,7 +149,23 @@ function PromotionSpecial(){
                         }
                     </div>
                 </a>
-                <a href={`${time ? "#clothes" : "#news"}`} className="col-span-2 md:col-span-1">
+                <a href={`${time ? "#releases" : "#glasses"}`} className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        { time ? 
+                            <>
+                                <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
+                            </>
+                            :
+                            <>
+                                <img src="https://assets.sunglasshut.com/is/image/LuxotticaRetail/805289441557__STD__shad__fr.png?impolicy=SGH_bgtransparent&width=1000" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Lentes</p>
+                            </>
+                        }
+                    </div>
+                </a>
+                <a href={`${time ? "#clothes" : "#rings"}`} className="col-span-2 md:col-span-1">
                     <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
                         items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
                         { time ? 
@@ -175,8 +175,8 @@ function PromotionSpecial(){
                             </>
                             :
                             <>
-                                <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
-                                <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
+                                <img src="https://pandoramx.vtexassets.com/arquivos/ids/434546/182392C01_Rosa_1.png?v=638222897945300000" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Anillos</p>
                             </>
                         }
                     </div>
@@ -191,15 +191,75 @@ function PromotionSpecial(){
                             </>
                             :
                             <>
+                                <img src="https://www.diamantesa.es/wp-content/uploads/anillo-compromiso-diamantesa.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Novedades</p>
+                            </>
+                        }
+                    </div>
+                </a>
+                <a href={`${time ? "#glasses" : "#releases"}`} className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        { time ? 
+                            <>
+                                <img src="https://assets.sunglasshut.com/is/image/LuxotticaRetail/805289441557__STD__shad__fr.png?impolicy=SGH_bgtransparent&width=1000" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Lentes</p>
+                            </>
+                            :
+                            <>
                                 <img src="https://pngimg.com/d/jewelry_PNG6809.png" alt="New Product Icon" className="size-12" />
                                 <p className="text-base border-b-2 border-b-pink-300">Lanzamientos</p>
                             </>
                         }
                     </div>
                 </a>
+                <a href={`${time ? "#rings" : "#clothes"}`} className="col-span-2 md:col-span-1">
+                    <div className="border border-transparent hover:border-black bg-[#F6F6F6] hover:scale-105 transition flex flex-col
+                        items-center justify-center p-5 gap-y-4 size-40 shadow-xl">
+                        { time ? 
+                            <>
+                                <img src="https://pandoramx.vtexassets.com/arquivos/ids/434546/182392C01_Rosa_1.png?v=638222897945300000" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Anillos</p>
+                            </>
+                            :
+                            <>
+                                <img src="https://pngimg.com/uploads/tshirt/tshirt_PNG5447.png" alt="New Product Icon" className="size-12" />
+                                <p className="text-base border-b-2 border-b-pink-300">Ropa Deportiva</p>
+                            </>
+                        }
+                    </div>
+                </a>
+
             </div>
         </div>
     )
 }
+function PhotoPromotion (){
+    return(
+        <div className="grid grid-cols-9 gap-0 mt-[50px] md:mt-[100px]">
+            <div className="col-span-12 flex flex-col gap-y-4 items-center justify-center mx-auto mb-[50px] text-center">
+                <h1 className="text-2xl md:text-4xl font-semibold text-center text-black">Colecciones destacadas</h1>
+                <p className="text text-sm md:text-xl text-black/80 font-medium">Guía de colecciones que te ayudaran a encontrar el accesorio que mejor se adapte a tus necesidades</p>
 
-export {Promotion, PromotionSport, PromotionSpecial, DiscoverPromotion};
+            </div>
+            <div className="col-span-3 flex items-center justify-center relative [&>img]:hover:opacity-60 transition bg-black cursor-pointer">
+                <img src="//malandra.mx/cdn/shop/files/Mesa_de_trabajo_2_600x.png?v=1697828849" className="w-full h-full transition duration-300" alt="" />
+                <p className="absolute m-auto font-serif font-light text-white text-[9px] md:text-xl text-center">Collares de la mejor calidad</p>
+            </div>
+            <div className="col-span-2 flex items-center justify-center relative [&>img]:hover:opacity-60 transition bg-black cursor-pointer">
+                <img src="//malandra.mx/cdn/shop/files/Mesa_de_trabajo_10_600x.png?v=1697828887" className="w-full h-full transition duration-300" alt="" />
+                <p className="absolute m-auto font-serif font-light text-white text-[9px] md:text-xl text-center">Joyería de plata</p>
+            </div>
+            <div className="col-span-2 flex items-center justify-center relative [&>img]:hover:opacity-60 transition bg-black cursor-pointer">
+                <img src="//malandra.mx/cdn/shop/files/Mesa_de_trabajo_4_b6953a7d-5ca4-4fe3-9546-678468095c42_600x.png?v=1697828933" className="w-full h-full transition duration-300" alt="" />
+                <p className="absolute m-auto font-serif font-light text-white text-[9px] md:text-xl text-center">Accesorio de lujo</p>
+            </div>
+            <div className="col-span-2 flex items-center justify-center relative [&>img]:hover:opacity-60 transition bg-black cursor-pointer">
+                <img src="//malandra.mx/cdn/shop/files/ergd_600x.png?v=1702507796" className="w-full h-full transition duration-300" alt="" />
+                <p className="absolute m-auto font-serif font-light text-white text-[9px] md:text-xl text-center">Dijes que expresan gratitud</p>
+            </div>
+        </div>
+    )
+
+}
+export {Promotion, PromotionSport, PromotionSpecial, DiscoverPromotion, PhotoPromotion};

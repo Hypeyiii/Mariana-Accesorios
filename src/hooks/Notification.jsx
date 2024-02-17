@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
 import "./Notification.css";
-import close from "../assets/close.svg";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 function Notification({ adding, modalVisible, setModalVisible }) {
   const handleClose = () => {
@@ -9,22 +8,11 @@ function Notification({ adding, modalVisible, setModalVisible }) {
   return (
     <div>
       {modalVisible && (
-        <div
-          id="notification"
-          className="modal-container fixed z-50 bottom-0 left-0 right-0 md:bottom-auto md:left-auto md:top-0 md:right-0 bg-pink-300/60 
-            backdrop-blur-sm p-2 shadow-2xl hover:shadow-black hover::shadow-lg transition-all
-            duration-300 rounded-lg"
-        >
-          <h1 className="text-xs md:text-base p-3 md:p-5 text-pretty font-bold text-black hover:text-black">
+        <div className="z-50 fixed w-full items-center justify-center flex top-0 left-0 p-2 text-white text-base font-mono">
+          <div className="entrance p-2 bg-green-300 flex flex-row items-center justify-center gap-x-2">
+            <IoIosCheckmarkCircle />
             {adding}
-          </h1>
-          <button
-            className="absolute top-0 right-0 p-1 items-center justify-center
-              hover:bg-black/15 transition-all duration-300 active:scale-125"
-            onClick={handleClose}
-          >
-            <img src={close} alt="Close Modal" className="size-3 md:size-6" />
-          </button>
+          </div>
         </div>
       )}
     </div>

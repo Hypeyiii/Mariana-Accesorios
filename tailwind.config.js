@@ -6,7 +6,20 @@ export default {
     'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: 
+    {
+      "animation": {
+        "text-gradient": "text-gradient 2s linear infinite"
+      },
+      "keyframes": {
+        "text-gradient": {
+          "to": {
+            "backgroundPosition": "200% center"
+          }
+        }
+      }
+    }
+    ,
   },
   plugins: [
     require('flowbite/plugin'),

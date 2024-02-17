@@ -27,7 +27,6 @@ import Notification from "./hooks/Notification.jsx";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./Components/CheckoutForm.jsx";
-import { parse } from "postcss";
 
 const stripePromise = loadStripe(
   "pk_test_51OkKmsBlx8QfT450Ul1ORZbvVVbcd0KEcWAPLHj5mP9P6BORvJ47mS9WFgDoC9ytYntZqMdNL3ITReBzaOkB3NOu00FOpmewfm"
@@ -126,6 +125,7 @@ function App() {
   const onBuyCart = () => {
     setIsProductBuying(true);
     setCartModal(false);
+    setIsBuyingAll(false);
   };
   const handleClose = () => {
     setIsProductBuying(false);
@@ -164,7 +164,7 @@ function App() {
     }
   });
 
-  const [isBuyingAll, setIsBuyingAll ] = useState(false);
+  const [isBuyingAll, setIsBuyingAll] = useState(false);
 
   const onBuyAll = () => {
     setIsBuyingAll(true);
@@ -173,6 +173,11 @@ function App() {
   const onCloseBuyAll = () => {
     setIsBuyingAll(false);
     setIsProductBuying(true);
+  };
+  const buyNow = () => {
+    addToCart(selectedProduct);
+    setIsBuyingAll(true);
+    setIsBuyingOnce(false);
   }
   return (
     <>
@@ -202,7 +207,7 @@ function App() {
       />
       {isBuyingAll && (
         <Elements stripe={stripePromise}>
-          <CheckoutForm price={total} onBuy={onCloseBuyAll} />
+          <CheckoutForm price={total} onBuy={onCloseBuyAll} onBack={onBuyCart} allProducts={allProducts} />
         </Elements>
       )}
 
@@ -221,6 +226,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+        <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Novedades
+          </span>
+        </div>
         {newProducts.map((product) => (
           <>
             <ProductItem
@@ -244,6 +254,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Lanzamientos
+          </span>
+        </div>
         {releaseProducts.map((product) => (
           <>
             <ProductItem
@@ -267,6 +282,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Ropa deportiva
+          </span>
+        </div>
         {clothesProducts.map((product) => (
           <>
             <ProductItem
@@ -290,6 +310,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Collares de lujo
+          </span>
+        </div>
         {necklaceProducts.map((product) => (
           <>
             <ProductItem
@@ -313,6 +338,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Lentes de sol
+          </span>
+        </div>
         {glassesProducts.map((product) => (
           <>
             <ProductItem
@@ -336,6 +366,11 @@ function App() {
         className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
                 auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
       >
+      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+            Anillos
+          </span>
+        </div>
         {ringProducts.map((product) => (
           <>
             <ProductItem
@@ -380,6 +415,7 @@ function App() {
           allProducts={allProducts}
           price={selectedProduct.productPrice}
           quantity={selectedProduct.quantity}
+          buyNow={buyNow}
         />
       )}
       {isWanted && (

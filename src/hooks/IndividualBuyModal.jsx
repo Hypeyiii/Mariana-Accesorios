@@ -12,7 +12,7 @@ function IndividualBuyModal({
   back,
   price,
   quantity,
-  buyNow,
+  link,
 }) {
   const [isHover, setIsHover] = useState(true);
 
@@ -112,11 +112,16 @@ function IndividualBuyModal({
             </div>
           </div>
         </div>
-        <button className="absolute bottom-0 bg-black text-white hover:bg-pink-300/60 hover:text-black transition w-full py-4 flex flex-row gap-x-3 items-center justify-center"
-        onClick={buyNow}>
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          className="bg-black text-white hover:bg-pink-300/60 hover:text-black transition w-full py-4 flex flex-row
+         gap-x-3 items-center justify-center cursor-pointer font-semibold"
+        >
           <FiShoppingCart />
           <p>Comprar Ahora</p>
-        </button>
+        </a>
       </div>
     </>
   );

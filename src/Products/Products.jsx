@@ -1,4 +1,3 @@
-
 export const newProducts = [
   {
     id: 1,
@@ -7,14 +6,16 @@ export const newProducts = [
     imgHover: "https://img.edenly.com/pt/40/saturno-n11__2315317_1.png",
     category: "Novedades",
     productName: "Anillo de Compromiso",
-    productPrice: 123,
+    link: "https://buy.stripe.com/test_28ocQtaDQfO9cGQaEE",
+    productPrice: "123",
     quantity: 1,
   },
   {
     id: 2,
     imgSrc: "https://www.pngarts.com/files/3/Jewellery-PNG-Image.png",
     category: "Novedades",
-    productName: "Collar de diamantes",
+    productName: "Collar de oro",
+    link: "https://buy.stripe.com/test_14kbMp27kcBXayIeUV",
     productPrice: "120",
     quantity: 1,
   },

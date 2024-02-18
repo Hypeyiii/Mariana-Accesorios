@@ -53,8 +53,9 @@ function ProductItem({
   return (
     <>
       <div
-        className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] md:hover:bg-[#ffffff] 
-                shadow-lg hover:shadow-black/80 transition duration-100 cursor-pointer [&>div>#image]:hover:scale-110 relative"
+        className="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-2 bg-[#f6f6f6] md:hover:bg-[#ffffff] 
+                shadow-lg hover:shadow-black/80 transition duration-100 cursor-pointer [&>div>#image]:hover:scale-110 relative
+                flex flex-col"
         onMouseEnter={handleHover}
         onMouseLeave={handleHoverLeave}
       >
@@ -101,7 +102,7 @@ function ProductItem({
             ${productPrice}.00 MX
           </span>
         </div>
-        <div className="flex flex-row justify-center items-center mt-[50px] mb-[50px]">
+        <div className="flex flex-row justify-center items-center mt-[25px] mb-[25px] md:mt-[50px] md:mb-[50px]">
           <img
             src={deliveryIcon}
             alt="Delivery Icon"
@@ -110,10 +111,10 @@ function ProductItem({
           <span className="font-semibold text-xs md:text-lg">Envio</span>
         </div>
         <div
-          className={`${hoverShopping} relative bottom-0`}
+          className={`${hoverShopping} bottom-0`}
           onClick={cartClick}
         >
-          <span className="p-2 md:p-4 font-bold text-[9px] md:text-sm uppercase ">
+          <span className="p-2 font-bold text-[9px] md:text-sm uppercase">
             {isWanted ? "Añadido" : "Añadir al carrito"}
           </span>
         </div>

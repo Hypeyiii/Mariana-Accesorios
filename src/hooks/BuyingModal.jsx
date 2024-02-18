@@ -1,6 +1,7 @@
 import { MdClose } from "react-icons/md";
 import "../Components/Menu.css";
 import { FaTrash } from "react-icons/fa6";
+import { GoArrowLeft } from "react-icons/go";
 
 
 function BuyingModal({
@@ -9,7 +10,8 @@ function BuyingModal({
   openInfoModal,
   onDeleteProduct,
   total,
-  onBuy
+  onBuy,
+  onBack
 }) 
 
 {
@@ -20,10 +22,18 @@ function BuyingModal({
         onClick={handleClose}
       ></div>
       <div className="slide-in-right fixed w-full md:w-[450px] h-3/4 overflow-y-auto right-0 top-0 bg-white flex flex-col items-center justify-center z-50 p-5">
-        <MdClose
-          onClick={handleClose}
-          className="absolute top-2 right-2 cursor-pointer size-7 text-black hover:text-red-700"
+        
+        <div className="z-50 absolute top-0 left-0 p-6" onClick={onBack}>
+        <GoArrowLeft
+          onClick={onBack}
+          className="cursor-pointer size-6 text-black hover:text-red-700"
         />
+        </div>
+       <div className="z-50 absolute top-0 right-0 p-6">
+       <MdClose
+          onClick={handleClose}
+          className="cursor-pointer size-6 text-black hover:text-red-700"
+        /></div> 
         <div className="absolute top-0 flex items-center justify-center font-semibold text-lg md:text-xl mt-5">
           <p className="border-b-2 border-b-pink-300">Comprar carrito</p>
         </div>
@@ -61,21 +71,22 @@ function BuyingModal({
       </div>
       <div
         className="slide-in-right bg-[#F6F6F6] h-1/4 w-full md:w-[450px] text-black shadow- shadow-black text-base font-bold z-50
-                        fixed bottom-0 right-0 flex flex-col items-center justify-center gap-y-2 px-[100px] border-t-[1px] border-t-black mt-5"
+                        fixed bottom-0 right-0 flex flex-col items-center justify-start gap-y-2 border-t-[1px] border-t-black"
       >
-        <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex flex-row justify-between items-center w-[50%] mt-6">
           <p>Subtotal</p>
           <p>${total}.00 MX</p>
         </div>
-        <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex flex-row justify-between items-center w-[50%]">
           <p>Entrega</p>
           <p>$.00 MX</p>
         </div>
-        <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex flex-row justify-between items-center w-[50%]">
           <p>Total</p>
           <p>${total}.00 MX</p>
         </div>
-        <button className="p-3 bg-black text-white hover:bg-pink-300/60 hover:text-white transition" onClick={onBuy}>
+        <button className="p-3 bg-black text-white hover:text-black hover:bg-pink-300/60 transition
+          absolute bottom-0 w-full text-sm md:text-base" onClick={onBuy}>
           Comprar ahora
         </button>
       </div>

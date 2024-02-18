@@ -72,11 +72,11 @@ function NavBar({
         if (window.scrollY + 200 >= top && window.scrollY < bottom) {
           navItems.forEach(function (item) {
             item.classList.remove("border-b-pink-300");
-            item.classList.remove("font-bold");
+            item.classList.remove("text-black");
           });
           if (navItems[index]) {
             navItems[index].classList.add("border-b-pink-300");
-            navItems[index].classList.add("font-bold");
+            navItems[index].classList.add("text-black");
           }
         }
       });
@@ -269,11 +269,11 @@ function NavBar({
                     {allProducts.length ? (
                       <>
                         <div className="h-1/6 flex flex-col gap-y-4 border-t-2 border-t-black fixed bottom-0 right-0 left-0 bg-[#f6f6f6]">
-                          <div className="flex flex-row justify-between mx-auto items-center gap-x-2 mt-2 text-sm">
-                            <p>Total:</p>
-                            <p>${total}.00 MX</p>
+                          <div className="flex flex-row justify-between mx-auto items-center gap-x-2 text-sm mt-10">
+                            <p className="text-base font-medium">Total:</p>
+                            <p className="text-base font-semibold">${total}.00 MX</p>
                           </div>
-                          <div className="flex flex-row gap-x-2 w-full items-center justify-center px-4">
+                          <div className="flex flex-row gap-x-2 w-full items-center justify-center px-4 absolute bottom-0 left-0">
                             <button
                               className="flex bg-black text-white text-sm p-2 items-center justify-center transition
                                   hover:bg-pink-300/60 hover:text-black w-full"

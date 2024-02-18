@@ -67,7 +67,7 @@ function PromotionSpecial() {
     <>
       <div
         className="grid grid-cols-6 auto-rows-auto w-[350px] md:w-[700px] sm:w-[650px] lg:w-[1000px] xl:w-[1250px]
-         2xl:w-[1350px] items-center justify-center mx-auto mt-[120px] mb-5 gap-5 md:gap-10"
+         2xl:w-[90%] items-center justify-center mx-auto mt-[120px] mb-5 gap-5 md:gap-10"
         id="earrings"
       >
         <div className="col-span-6 lg:col-span-2 w-[300px] flex flex-col gap-y-6 justify-start items-start mx-auto">
@@ -189,12 +189,12 @@ const DiscoverPromotion = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-12 items-center justify-center mx-auto gap-4 mt-24 w-full md:w-[75%]">
-      <div className="flex flex-col justify-center items-center md:items-start md:jusitfy-start col-span-12 md:col-span-3 text-xl font-semibold">
+    <div className="grid grid-cols-12 items-center justify-center mx-auto gap-4 mt-24 w-full md:w-[85%]">
+      <div className="flex flex-col justify-center items-center md:items-start md:jusitfy-start col-span-12 md:col-span-2 text-xl font-semibold">
         <h1 className="text-base">Descubre Mariana Accesorios</h1>
         <p className="text-sm font-light">Joyeria que necesitas</p>
       </div>
-      <div className="col-span-12 md:col-span-9 grid grid-cols-4 md:grid-cols-6 gap-4 mx-auto">
+      <div className="col-span-12 md:col-span-10 grid grid-cols-4 md:grid-cols-6 mx-auto gap-5 md:gap-10">
         <a
           href={`${time ? "#news" : "#necklace"}`}
           className="col-span-2 md:col-span-1"

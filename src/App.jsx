@@ -179,6 +179,10 @@ function App() {
     setIsBuyingAll(true);
     setIsBuyingOnce(false);
   }
+  const onBack = () => {
+    setIsProductBuying(false);
+    setCartModal(true);
+  };
   return (
     <>
       <CarouselGift />
@@ -219,15 +223,16 @@ function App() {
           onDeleteProduct={removeFromCart}
           total={total}
           onBuy={onBuyAll}
+          onBack={onBack}
         />
       )}
       <div
         id="news"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-        <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+        <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Novedades
           </span>
         </div>
@@ -240,6 +245,7 @@ function App() {
               category={product.category}
               productName={product.productName}
               productPrice={product.productPrice}
+              link={product.link}
               addToCart={() => addToCart(product)}
               addToFavorite={() => addToFavorites(product)}
               openInfoProductModal={() => addToModal(product)}
@@ -251,11 +257,11 @@ function App() {
       <PromotionSpecial />
       <div
         id="releases"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+      <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Lanzamientos
           </span>
         </div>
@@ -279,11 +285,11 @@ function App() {
       <Promotion openModal={openModal} />
       <div
         id="clothes"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+      <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Ropa deportiva
           </span>
         </div>
@@ -307,11 +313,11 @@ function App() {
       <DiscoverPromotion />
       <div
         id="necklace"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+      <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Collares de lujo
           </span>
         </div>
@@ -335,11 +341,11 @@ function App() {
       <PromotionSport />
       <div
         id="glasses"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+      <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Lentes de sol
           </span>
         </div>
@@ -363,11 +369,11 @@ function App() {
       <PhotoPromotion />
       <div
         id="rings"
-        className="section grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
-                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[80%]"
+        className="section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-10
+                auto-rows-auto mx-auto mt-[30px] md:mt-[100px] gap-5 px-4 md:w-[90%]"
       >
-      <div className="col-span-2 md:col-span-6 lg:col-span-9 xl:col-span-10">
-          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#f3c3ff] via-[#e29aff] to-[#f9c7fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+      <div className="col-span-2 sm:col-span-3 md:col-span-6 lg:col-span-9 xl:col-span-10">
+          <span className="inline-flex md:text-3xl animate-text-gradient bg-gradient-to-r from-[#ffc3f3] via-[#ff9af5] to-[#fec7f8] bg-[200%_auto] bg-clip-text text-xl text-transparent">
             Anillos
           </span>
         </div>
@@ -415,7 +421,7 @@ function App() {
           allProducts={allProducts}
           price={selectedProduct.productPrice}
           quantity={selectedProduct.quantity}
-          buyNow={buyNow}
+          link={selectedProduct.link}
         />
       )}
       {isWanted && (
